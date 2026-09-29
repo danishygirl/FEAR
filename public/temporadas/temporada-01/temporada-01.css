@@ -1,0 +1,253 @@
+:root {
+  --s1-bg: #171719;
+  --s1-bg-image: none;
+  --s1-bg-position: center;
+  --s1-bg-size: cover;
+  --s1-overlay: rgba(5,5,7,.28);
+  --s1-text: #f1f1f3;
+  --s1-muted: #a2a2a8;
+  --s1-accent: #ff5964;
+  --s1-nav-bg: rgba(18,18,20,.56);
+  --s1-nav-border: rgba(255,255,255,.13);
+  --s1-nav-active: rgba(255,255,255,.07);
+  --s1-season-btn-bg: #f2f2f2;
+  --s1-season-btn-text: #111113;
+  --s1-poster-border: rgba(255,255,255,.18);
+  --s1-nav-font: 11px;
+  --s1-eyebrow-font: 11px;
+  --s1-title-font: 43px;
+  --s1-body-font: 17px;
+  --s1-season-btn-font: 11px;
+  --s1-poster-width: 37vw;
+  --s1-content-max: 560px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  min-height: 100vh;
+  background: var(--s1-bg);
+  color: var(--s1-text);
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  letter-spacing: .01em;
+}
+
+.season-shell {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  isolation: isolate;
+  background-color: var(--s1-bg);
+  background-image: var(--s1-bg-image);
+  background-position: var(--s1-bg-position);
+  background-size: var(--s1-bg-size);
+  background-repeat: no-repeat;
+}
+.season-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background: var(--s1-overlay);
+}
+.season-shell::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 76% 18%, color-mix(in srgb, var(--s1-accent) 14%, transparent), transparent 33%),
+    radial-gradient(circle at 67% 90%, color-mix(in srgb, var(--s1-accent) 7%, transparent), transparent 36%);
+  opacity: .7;
+}
+
+.season-nav-wrap {
+  position: relative;
+  z-index: 10;
+  width: calc(100% - 64px);
+  margin: 36px auto 0;
+}
+.season-nav {
+  min-height: 72px;
+  padding: 8px 10px 8px 18px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  border: 1px solid var(--s1-nav-border);
+  border-radius: 999px;
+  background: var(--s1-nav-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 18px 55px rgba(0,0,0,.18);
+}
+.back-link {
+  width: 210px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  color: var(--s1-text);
+  text-decoration: none;
+  font-size: var(--s1-nav-font);
+  letter-spacing: .34em;
+  text-transform: uppercase;
+}
+.back-arrow { font-size: 22px; letter-spacing: normal; }
+.season-menu {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-width: 0;
+}
+.season-menu a {
+  position: relative;
+  padding: 20px 25px;
+  border-radius: 999px;
+  color: var(--s1-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  font-size: var(--s1-nav-font);
+  letter-spacing: .18em;
+  transition: background .22s ease, color .22s ease, transform .22s ease;
+}
+.season-menu a:hover,
+.season-menu a.active {
+  color: var(--s1-text);
+  background: var(--s1-nav-active);
+  transform: translateY(-1px);
+}
+.season-menu a.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 11px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  background: var(--s1-accent);
+  box-shadow: 0 0 15px var(--s1-accent);
+}
+.season-id-button {
+  flex: 0 0 auto;
+  min-width: 180px;
+  padding: 20px 26px;
+  border-radius: 999px;
+  background: var(--s1-season-btn-bg);
+  color: var(--s1-season-btn-text);
+  text-align: center;
+  font-size: var(--s1-season-btn-font);
+  font-weight: 650;
+  letter-spacing: .19em;
+}
+
+.season-main {
+  width: min(1320px, calc(100% - 110px));
+  min-height: calc(100vh - 150px);
+  margin: 20px auto 0;
+  padding: 45px 0 70px;
+  display: grid;
+  grid-template-columns: minmax(340px, var(--s1-poster-width)) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(70px, 8vw, 135px);
+}
+.poster-frame {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  border: 1px solid var(--s1-poster-border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,.02);
+  box-shadow: 0 28px 80px rgba(0,0,0,.23);
+}
+.poster-frame img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+.season-copy {
+  max-width: var(--s1-content-max);
+  padding-right: 16px;
+}
+.accent-mark {
+  width: 20px;
+  height: 3px;
+  margin-bottom: 28px;
+  background: var(--s1-accent);
+}
+.season-eyebrow {
+  margin-bottom: 18px;
+  color: var(--s1-muted);
+  font-size: var(--s1-eyebrow-font);
+  letter-spacing: .52em;
+}
+.season-title {
+  margin: 0;
+  font-size: var(--s1-title-font);
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: .035em;
+}
+.title-rule {
+  width: 50px;
+  height: 3px;
+  margin: 28px 0 31px;
+  background: var(--s1-accent);
+}
+.synopsis p {
+  margin: 0 0 31px;
+  color: var(--s1-muted);
+  font-size: var(--s1-body-font);
+  font-weight: 350;
+  line-height: 1.78;
+  letter-spacing: .035em;
+}
+
+.placeholder-main {
+  width: min(1120px, calc(100% - 90px));
+  min-height: calc(100vh - 150px);
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  padding: 70px 0;
+}
+.placeholder-card {
+  width: 100%;
+  padding: 70px;
+  border: 1px solid var(--s1-nav-border);
+  border-radius: 28px;
+  background: rgba(255,255,255,.025);
+}
+.placeholder-card small { color: var(--s1-accent); letter-spacing: .28em; }
+.placeholder-card h1 { margin: 18px 0 12px; font-size: 44px; font-weight: 350; }
+.placeholder-card p { max-width: 650px; color: var(--s1-muted); line-height: 1.75; }
+
+@media (max-width: 1180px) {
+  .season-nav-wrap { width: calc(100% - 36px); }
+  .back-link { width: auto; }
+  .back-link .back-label { display: none; }
+  .season-id-button { display: none; }
+  .season-menu { overflow-x: auto; justify-content: flex-start; scrollbar-width: none; }
+  .season-menu::-webkit-scrollbar { display: none; }
+  .season-main { width: calc(100% - 70px); gap: 60px; }
+}
+@media (max-width: 850px) {
+  .season-nav-wrap { margin-top: 18px; }
+  .season-nav { min-height: 62px; padding-left: 16px; }
+  .season-menu a { padding: 16px 18px; }
+  .season-main {
+    width: min(620px, calc(100% - 40px));
+    grid-template-columns: 1fr;
+    gap: 50px;
+    padding-top: 50px;
+  }
+  .poster-frame { max-width: 390px; }
+  .season-copy { padding: 0; }
+  .season-title { font-size: min(var(--s1-title-font), 38px); }
+}

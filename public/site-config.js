@@ -43,7 +43,8 @@ window.OC101_CONFIG = {
   searchPages: [
     { name: "Home", url: "index.html" },
     { name: "Temporadas", url: "temporadas.html" },
-    { name: "Temporada 01", url: "temporadas/temporada-01/index.html" }
+    { name: "Temporada 01", url: "temporadas/temporada-01/index.html" },
+    { name: "Sistema — Temporada 01", url: "temporadas/temporada-01/sistema.html" }
   ],
 
   home: {

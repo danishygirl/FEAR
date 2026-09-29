@@ -4,16 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Temporada 01 — OC 101</title>
-  <link rel="stylesheet" href="../../style.css">
+  <link rel="stylesheet" href="temporada-01.css">
 </head>
 <body>
-  <main class="microsite-placeholder">
-    <section class="microsite-box">
-      <small>OC 101 / SEASON I</small>
-      <h1>Microsite da Temporada 01</h1>
-      <p>Esta página é apenas um placeholder para a próxima etapa. Aqui construiremos o universo próprio da primeira temporada, com identidade visual, episódios, personagens, pistas, mapa e demais módulos.</p>
-      <a class="back-link" href="../../temporadas.html">← Voltar para Seasons</a>
+<div class="season-shell">
+  <header class="season-nav-wrap">
+    <nav class="season-nav" aria-label="Navegação da Temporada 01">
+      <a class="back-link" data-season-back href="../../temporadas.html">
+        <span class="back-arrow">←</span>
+        <span class="back-label">OC 101</span>
+      </a>
+      <div class="season-menu" data-season-menu></div>
+      <div class="season-id-button" data-season-number>TEMPORADA 01</div>
+    </nav>
+  </header>
+
+  <main class="season-main">
+    <figure class="poster-frame">
+      <img data-season-poster src="assets/poster-placeholder.svg" alt="Pôster da Temporada 01">
+    </figure>
+
+    <section class="season-copy">
+      <div class="accent-mark"></div>
+      <div class="season-eyebrow" data-season-eyebrow>TEMPORADA 01</div>
+      <h1 class="season-title" data-season-title>NOME DA TEMPORADA</h1>
+      <div class="title-rule"></div>
+      <div class="synopsis" data-season-synopsis></div>
     </section>
   </main>
+</div>
+<script src="temporada-01-data.js"></script>
+<script src="temporada-01.js"></script>
 </body>
 </html>

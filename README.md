@@ -1,39 +1,53 @@
-# OC 101
+# OC 101 — Site atual
 
-Projeto base do site OC 101 para GitHub + Cloudflare Workers.
+Projeto estático preparado para GitHub + Cloudflare Workers/Assets.
 
-## Estrutura atual
+## Estrutura principal
 
-- `public/index.html` — Home minimalista
-- `public/temporadas.html` — índice de temporadas
-- `public/site-config.js` — identidade, cores, tamanhos, links e temporadas
-- `public/style.css` — layout global
-- `public/app.js` — menu, busca, configurações e temporadas
-- `public/temporadas/temporada-01/index.html` — placeholder do primeiro microsite
+- `public/index.html` — Home
+- `public/temporadas.html` — índice de Seasons
+- `public/site-config.js` — configurações globais do OC 101
+- `public/temporadas/temporada-01/index.html` — Main da Temporada 01
+- `public/temporadas/temporada-01/temporada-01-data.js` — **conteúdo, cores, fundos, menus e tamanhos da Temporada 01**
+- `public/temporadas/temporada-01/temporada-01.css` — estilo da Temporada 01
+- `public/temporadas/temporada-01/temporada-01.js` — montagem dinâmica da temporada
 
-## Editar rapidamente
+## Temporada 01
 
-Abra `public/site-config.js` para alterar:
+A Main já possui:
 
-- nome do site
-- frase abaixo do nome
-- logo
-- cores
-- tamanhos de fonte
-- links do menu
-- Discord / Fórum
-- ícones do topo da página Seasons
-- pôsteres, títulos e sinopses das temporadas
+- menu superior transparente;
+- botão de retorno para Seasons;
+- botões editáveis para Main, Episódios, Personagens, Pistas, Mapa, Sistema e Arquivos;
+- pôster editável;
+- número, título e sinopse editáveis;
+- background em cor ou imagem editável;
+- cores, transparências e tamanhos de fonte editáveis;
+- páginas placeholder conectadas aos botões, evitando links quebrados enquanto cada área é construída.
 
-## Cloudflare
+### Para trocar o pôster
 
-1. Suba todos os arquivos para o GitHub.
-2. Conecte o repositório ao Cloudflare.
-3. O diretório de assets estáticos é `./public`.
+Substitua `public/temporadas/temporada-01/assets/poster-placeholder.svg` ou mude a propriedade `poster` em `temporada-01-data.js`.
 
-Para desenvolvimento local:
+### Para trocar o fundo da Main
+
+Em `temporada-01-data.js`, edite:
+
+```js
+background: "#171719",
+backgroundImage: "",
+backgroundOverlay: "rgba(5, 5, 7, 0.28)"
+```
+
+Exemplo com imagem:
+
+```js
+backgroundImage: "url('assets/background.webp')"
+```
+
+## Deploy
 
 ```bash
 npm install
-npm run dev
+npm run deploy
 ```

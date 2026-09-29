@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#09090b"/>
+      <stop offset="0.55" stop-color="#211014"/>
+      <stop offset="1" stop-color="#09090b"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="42%" r="42%">
+      <stop offset="0" stop-color="#ff5964" stop-opacity=".58"/>
+      <stop offset="1" stop-color="#ff5964" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="1200" fill="url(#bg)"/>
+  <rect width="800" height="1200" fill="url(#glow)"/>
+  <g fill="none" stroke="#ff8991" stroke-opacity=".24">
+    <rect x="28" y="28" width="744" height="1144" rx="10"/>
+    <path d="M80 170h170M550 1030h170"/>
+  </g>
+  <circle cx="400" cy="540" r="170" fill="#060608" opacity=".68"/>
+  <path d="M238 672c58-197 133-287 229-271 75 12 124 96 120 210-78-46-141-55-207-21-53 27-95 62-142 82z" fill="#09090b"/>
+  <text x="80" y="105" fill="#d7d2d3" font-family="Arial, sans-serif" font-size="25" letter-spacing="12">TEMPORADA</text>
+  <text x="80" y="145" fill="#d7d2d3" font-family="Arial, sans-serif" font-size="28" letter-spacing="10">01</text>
+  <text x="400" y="1010" text-anchor="middle" fill="#f3bdc0" font-family="Georgia, serif" font-size="80" letter-spacing="12">OC 101</text>
+  <text x="400" y="1065" text-anchor="middle" fill="#b9abad" font-family="Arial, sans-serif" font-size="18" letter-spacing="13">NOME DA TEMPORADA</text>
+</svg>
