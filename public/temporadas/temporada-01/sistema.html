@@ -14,24 +14,28 @@
       <a class="nav-main" data-main href="index.html">MAIN</a>
     </header>
 
-    <main class="system-page">
-      <div class="system-topline">
-        <div>
-          <div class="system-kicker" data-system-kicker>MANUAL DE CAMPO / 01</div>
-          <h1 data-system-title>SISTEMA</h1>
-        </div>
-        <div class="system-file-code" data-system-code>FILE: SYS-01</div>
+    <main class="system-menu-page">
+      <div class="system-menu-head">
+        <div class="system-kicker" data-system-kicker>MANUAL DE CAMPO / 01</div>
+        <h1 data-system-title>SISTEMA</h1>
+        <p class="system-menu-intro" data-system-intro></p>
       </div>
 
-      <p class="system-intro" data-system-intro></p>
+      <section class="system-choice-grid" data-system-cards aria-label="Opções do Sistema"></section>
 
-      <section class="system-card-grid" data-system-cards></section>
-
-      <footer class="system-footer">
+      <footer class="system-footer system-menu-footer">
         <span data-system-footer-left>OC 101 / CAMP RULEBOOK</span>
         <span data-system-footer-right>REV. 01</span>
       </footer>
     </main>
+  </div>
+
+  <div class="system-modal" data-system-modal aria-hidden="true">
+    <button class="system-modal-backdrop" data-system-close aria-label="Fechar"></button>
+    <section class="system-modal-panel" role="dialog" aria-modal="true" aria-labelledby="system-modal-title">
+      <button class="system-modal-close" data-system-close aria-label="Fechar">×</button>
+      <div data-system-modal-content></div>
+    </section>
   </div>
 
   <script src="temporada-01-data.js"></script>

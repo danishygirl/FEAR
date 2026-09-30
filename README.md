@@ -65,3 +65,7 @@ O arquivo padrão incluído é:
 
 Edite `theme.background` para mudar imagem, cor, posição, tamanho, repetição, fixação e overlay.
 Para desativar a imagem, use `image: ""`.
+
+
+## Sistema V2
+A página Sistema agora abre com apenas três cards centralizados: Sobreviva!, Atributos e Vantagens. Cada card abre um modal/hover independente. O conteúdo é editável em `public/temporadas/temporada-01/temporada-01-data.js` dentro de `pages.sistema`.

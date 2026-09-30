@@ -52,24 +52,52 @@
     const q=(sel)=>document.querySelector(sel);
     if(q('[data-system-kicker]')) q('[data-system-kicker]').textContent=p.kicker || '';
     if(q('[data-system-title]')) q('[data-system-title]').textContent=p.title || 'SISTEMA';
-    if(q('[data-system-code]')) q('[data-system-code]').textContent=p.code || '';
     if(q('[data-system-intro]')) q('[data-system-intro]').textContent=p.intro || '';
     if(q('[data-system-footer-left]')) q('[data-system-footer-left]').textContent=p.footerLeft || '';
     if(q('[data-system-footer-right]')) q('[data-system-footer-right]').textContent=p.footerRight || '';
+
+    const esc=(v='')=>String(v).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
     const grid=q('[data-system-cards]');
-    if(grid){
-      grid.innerHTML=(p.cards||[]).map((card,i)=>{
-        const sections=(card.sections||[]).map(sec=>`<div class="system-rule"><h3>${sec.title}</h3><p>${sec.text}</p></div>`).join('');
-        const attrs=(card.attributes||[]).map(a=>`<div class="attribute-item"><strong>${a.name}</strong><span>${a.description}</span></div>`).join('');
-        return `<article class="system-card" data-system-card="${card.key||i}">
-          <div class="system-card-label">0${i+1} / ${card.key||'arquivo'}</div>
-          <div class="system-card-visual"><img src="${card.image||''}" alt=""></div>
-          <h2>${card.title}</h2>
-          <p class="system-card-summary">${card.summary||''}</p>
-          ${attrs ? `<div class="attribute-list">${attrs}</div>` : `<div class="system-rule-list">${sections}</div>`}
-        </article>`;
-      }).join('');
+    const modal=q('[data-system-modal]');
+    const modalContent=q('[data-system-modal-content]');
+
+    function renderDetail(card){
+      if(card.key==='sobreviva'){
+        return `<div class="system-detail-head"><span class="system-detail-file">${esc(p.code||'FILE: SYS-01')}</span><h2 id="system-modal-title">${esc(card.title)}</h2><p>${esc(card.intro||card.summary||'')}</p></div>
+          <div class="system-step-list">${(card.sections||[]).map((sec,i)=>`<article class="system-step"><div class="system-step-marker">${i < 2 ? '✓' : '◌'}</div><div><h3>${esc(sec.title)}</h3><p>${esc(sec.text)}</p></div></article>`).join('')}</div>`;
+      }
+      const items=card.key==='atributos' ? (card.attributes||[]) : (card.advantages||[]);
+      return `<div class="system-detail-head"><span class="system-detail-file">${esc(p.code||'FILE: SYS-01')}</span><h2 id="system-modal-title">${esc(card.title)}</h2><p>${esc(card.intro||card.summary||'')}</p></div>
+        <div class="system-icon-grid">${items.map(item=>`<article class="system-icon-item"><div class="system-icon-wrap"><img src="${esc(item.icon||'')}" alt=""></div><h3>${esc(item.name)}</h3><p>${esc(item.description)}</p></article>`).join('')}</div>`;
     }
+
+    function openModal(card){
+      modalContent.innerHTML=renderDetail(card);
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden','false');
+      document.body.classList.add('modal-open');
+      q('.system-modal-close')?.focus();
+    }
+    function closeModal(){
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden','true');
+      document.body.classList.remove('modal-open');
+    }
+
+    if(grid){
+      grid.innerHTML=(p.cards||[]).map((card,i)=>`<button class="system-choice-card" type="button" data-system-open="${esc(card.key||i)}">
+        <div class="system-choice-image"><img src="${esc(card.image||'')}" alt=""></div>
+        <div class="system-choice-copy"><span class="system-choice-number">0${i+1}</span><h2>${esc(card.title)}</h2><p>${esc(card.summary||'')}</p></div>
+      </button>`).join('');
+      grid.addEventListener('click',e=>{
+        const btn=e.target.closest('[data-system-open]');
+        if(!btn) return;
+        const card=(p.cards||[]).find(x=>String(x.key)===btn.dataset.systemOpen);
+        if(card) openModal(card);
+      });
+    }
+    document.querySelectorAll('[data-system-close]').forEach(el=>el.addEventListener('click',closeModal));
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape' && modal?.classList.contains('is-open')) closeModal(); });
     return;
   }
 
