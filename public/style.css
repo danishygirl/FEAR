@@ -219,3 +219,64 @@ button, input { font: inherit; }
   .manual-topic-title-wrap h2{font-size:18px;}
   .manual-topic-title-wrap p,.manual-topic-body{font-size:13px;}
 }
+
+/* GLOBAL ATTRIBUTES / ARCHETYPES */
+:root{
+  --attr-page-bg:#050505;
+  --attr-page-text:#f2f2f2;
+  --attr-page-muted:#b1b1b1;
+  --attr-page-line:rgba(255,255,255,.14);
+  --attr-page-icon:#f2f2f2;
+}
+.attributes-page{background:var(--attr-page-bg); color:var(--attr-page-text);}
+.attributes-page-standalone{min-height:100vh;}
+.attributes-shell{max-width:1360px;margin:0 auto;padding:56px 44px 88px;min-height:100vh;}
+.attributes-section,.archetypes-section{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(360px,.95fr);gap:48px;align-items:start;}
+.section-header.compact{padding:4px 0 16px; border-bottom:1px solid var(--attr-page-line); margin-bottom:30px;}
+.section-header.compact h1,.section-header.compact h2{margin:0; font-size:17px; line-height:1.1; font-weight:700; letter-spacing:.02em; text-transform:none;}
+.attribute-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 24px;}
+.attribute-button{position:relative;background:transparent;border:0;color:var(--attr-page-text);padding:0;text-align:center;cursor:pointer;transition:transform .16s ease, opacity .16s ease;}
+.attribute-button:hover,.archetype-button:hover{transform:translateY(-2px)}
+.attribute-button.active .attribute-icon,.archetype-button.active .archetype-icon{border-color:rgba(255,255,255,.95);box-shadow:0 0 0 1px rgba(255,255,255,.22) inset;}
+.attribute-icon,.detail-icon.large,.archetype-icon{display:grid;place-items:center;border:1.6px solid rgba(255,255,255,.55);border-radius:999px;background:transparent;color:var(--attr-page-icon);}
+.attribute-icon{width:102px;height:102px;margin:0 auto 12px;}
+.attribute-icon img,.detail-icon.large img,.archetype-icon img{width:62%;height:62%;display:block;object-fit:contain;filter:brightness(100) invert(1); opacity:.95;}
+.attribute-title{display:block;font-size:14px;line-height:1.35;color:#e3e3e3;}
+.attribute-level-badge,.archetype-level-badge{position:absolute;top:6px;right:14px;font-size:18px;line-height:1;color:#d0d0d0;}
+.attributes-right,.archetypes-right{padding-top:48px;}
+.detail-head{display:flex;align-items:center;gap:22px;padding-bottom:24px;border-bottom:1px solid var(--attr-page-line);}
+.detail-icon.large{width:112px;height:112px;flex:0 0 auto;}
+.detail-head-copy h3{margin:0 0 8px;font-size:28px;line-height:1;letter-spacing:0;text-transform:none;}
+.detail-head-copy p{margin:0;color:var(--attr-page-muted);font-size:15px;line-height:1.55;max-width:34ch;}
+.level-list,.arch-detail-list{margin-top:8px;}
+.level-row,.arch-detail-row{display:grid;grid-template-columns:110px 1fr;gap:20px;padding:18px 0;border-bottom:1px solid var(--attr-page-line);}
+.level-name,.arch-label{font-size:15px;font-weight:700;color:#f0f0f0;}
+.level-copy p,.arch-value{margin:0;font-size:15px;line-height:1.55;color:#dddddd;}
+.level-roll{margin-top:5px!important;color:#aaaaaa !important;}
+.attributes-divider{height:1px;background:var(--attr-page-line);margin:40px 0 28px;}
+.archetype-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px 28px;}
+.archetype-button{position:relative;background:transparent;border:0;color:var(--attr-page-text);padding:0;display:flex;align-items:center;gap:16px;text-align:left;cursor:pointer;min-height:44px;}
+.archetype-icon{width:54px;height:54px;flex:0 0 auto;}
+.archetype-icon img{width:58%;height:58%;}
+.archetype-title{font-size:14px;line-height:1.35;color:#e8e8e8;}
+.archetype-button.active .archetype-title{color:#fff;}
+.archetype-level-badge{top:-4px;right:auto;left:34px;font-size:11px;}
+
+@media (max-width: 1300px){
+  .attribute-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .archetype-list{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+@media (max-width: 1024px){
+  .attributes-shell{padding:36px 24px 52px;}
+  .attributes-section,.archetypes-section{grid-template-columns:1fr;gap:18px;}
+  .attributes-right,.archetypes-right{padding-top:0;}
+}
+@media (max-width: 700px){
+  .attribute-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 14px;}
+  .attribute-icon{width:86px;height:86px;}
+  .detail-icon.large{width:90px;height:90px;}
+  .detail-head{gap:16px;}
+  .detail-head-copy h3{font-size:24px;}
+  .level-row,.arch-detail-row{grid-template-columns:1fr;gap:8px;}
+  .archetype-list{grid-template-columns:1fr;}
+}

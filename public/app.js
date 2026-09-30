@@ -216,6 +216,96 @@ function renderSeasons() {
   });
 }
 
+
+function renderAttributesPage() {
+  const page = document.getElementById("attributes-page");
+  if (!page || !CONFIG.attributesPage) return;
+  const cfg = CONFIG.attributesPage;
+  const attrGrid = document.getElementById("attribute-grid");
+  const attrDetail = document.getElementById("attribute-detail");
+  const archList = document.getElementById("archetype-list");
+  const archDetail = document.getElementById("archetype-detail");
+
+  document.documentElement.style.setProperty("--attr-page-bg", cfg.background || "#060606");
+  document.documentElement.style.setProperty("--attr-page-text", cfg.text || "#f2f2f2");
+  document.documentElement.style.setProperty("--attr-page-muted", cfg.mutedText || "#adadad");
+  document.documentElement.style.setProperty("--attr-page-line", cfg.line || "rgba(255,255,255,.16)");
+  document.documentElement.style.setProperty("--attr-page-icon", cfg.iconColor || "#f2f2f2");
+
+  function renderAttributeDetail(item) {
+    if (!attrDetail || !item) return;
+    attrDetail.innerHTML = `
+      <div class="detail-head">
+        <div class="detail-icon large"><img src="${item.icon || ''}" alt=""></div>
+        <div class="detail-head-copy">
+          <h3>${item.title || ''}</h3>
+          <p>${item.summary || ''}</p>
+        </div>
+      </div>
+      <div class="level-list">
+        ${(item.levels || []).map(level => `
+          <div class="level-row">
+            <div class="level-name">Nível ${level.level}</div>
+            <div class="level-copy">
+              <p class="level-effect">${level.effect || ''}</p>
+              <p class="level-roll">${level.roll || ''}</p>
+            </div>
+          </div>`).join('')}
+      </div>`;
+  }
+
+  function renderArchetypeDetail(item) {
+    if (!archDetail || !item) return;
+    archDetail.innerHTML = `
+      <div class="detail-head">
+        <div class="detail-icon large"><img src="${item.icon || ''}" alt=""></div>
+        <div class="detail-head-copy">
+          <h3>${item.title || ''}</h3>
+          <p>${item.summary || ''}</p>
+        </div>
+      </div>
+      <div class="arch-detail-list">
+        <div class="arch-detail-row"><div class="arch-label">Estilo de jogo</div><div class="arch-value">${item.style || ''}</div></div>
+        <div class="arch-detail-row"><div class="arch-label">Foco narrativo</div><div class="arch-value">${item.focus || ''}</div></div>
+        <div class="arch-detail-row"><div class="arch-label">Vantagem inicial</div><div class="arch-value">${item.benefit || ''}</div></div>
+      </div>`;
+  }
+
+  if (attrGrid) {
+    attrGrid.innerHTML = (cfg.attributes || []).map((item, index) => `
+      <button class="attribute-button ${index === 0 ? 'active' : ''}" type="button" data-attribute-index="${index}">
+        <span class="attribute-level-badge">${item.defaultLevel ?? 0}</span>
+        <span class="attribute-icon"><img src="${item.icon || ''}" alt=""></span>
+        <span class="attribute-title">${item.title || ''}</span>
+      </button>`).join('');
+    attrGrid.querySelectorAll('[data-attribute-index]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        attrGrid.querySelectorAll('.attribute-button').forEach(x => x.classList.remove('active'));
+        btn.classList.add('active');
+        renderAttributeDetail(cfg.attributes[Number(btn.dataset.attributeIndex)]);
+      });
+    });
+    renderAttributeDetail((cfg.attributes || [])[0]);
+  }
+
+  if (archList) {
+    archList.innerHTML = (cfg.archetypes || []).map((item, index) => `
+      <button class="archetype-button ${index === 0 ? 'active' : ''}" type="button" data-archetype-index="${index}">
+        <span class="archetype-level-badge">${item.startingLevel ?? 0}</span>
+        <span class="archetype-icon"><img src="${item.icon || ''}" alt=""></span>
+        <span class="archetype-title">${item.title || ''}</span>
+      </button>`).join('');
+    archList.querySelectorAll('[data-archetype-index]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        archList.querySelectorAll('.archetype-button').forEach(x => x.classList.remove('active'));
+        btn.classList.add('active');
+        renderArchetypeDetail(cfg.archetypes[Number(btn.dataset.archetypeIndex)]);
+      });
+    });
+    renderArchetypeDetail((cfg.archetypes || [])[0]);
+  }
+}
+
 (async function init() {
   applyConfig();
   createMenu();
@@ -223,6 +313,7 @@ function renderSeasons() {
   renderSeasons();
   renderGlobalSystem();
   renderManual();
+  renderAttributesPage();
   setupSearch();
   await createSearchIndex();
 })();

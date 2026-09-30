@@ -118,6 +118,128 @@ window.OC101_CONFIG = {
     ]
   },
 
+
+  attributesPage: {
+    background: "#050505",
+    text: "#f2f2f2",
+    mutedText: "#b1b1b1",
+    line: "rgba(255,255,255,.14)",
+    iconColor: "#f2f2f2",
+    attributes: [
+      {
+        title: "Furtividade",
+        icon: "assets/attr-furtividade.svg",
+        defaultLevel: 1,
+        summary: "Mover-se sem ser notado e agir com discrição.",
+        levels: [
+          { level: 0, effect: "Sem treino. Você tem dificuldade em se manter oculto ou agir com precisão em silêncio.", roll: "Role 1d6 puro em testes de furtividade." },
+          { level: 1, effect: "Treino básico. Consegue se esconder ou se aproximar em situações simples.", roll: "Role 1d6 + 1 em testes de furtividade." },
+          { level: 2, effect: "Treinado. Move-se sem ser notado na maioria das cenas e sabe explorar cobertura.", roll: "Role 1d6 + 2 em testes de furtividade." },
+          { level: 3, effect: "Especialista. Extremamente discreto, difícil de detectar e eficiente em infiltrações.", roll: "Role 1d6 + 3 em testes de furtividade." }
+        ]
+      },
+      {
+        title: "Proficiência",
+        icon: "assets/attr-proficiencia.svg",
+        defaultLevel: 0,
+        summary: "Lidar com instrumentos, kits, armas improvisadas e tarefas técnicas.",
+        levels: [
+          { level: 0, effect: "Sem prática. Seu uso de ferramentas é intuitivo e pouco confiável.", roll: "Role 1d6 puro em testes de proficiência." },
+          { level: 1, effect: "Noções básicas. Você opera itens comuns sem muita dificuldade.", roll: "Role 1d6 + 1 em testes de proficiência." },
+          { level: 2, effect: "Prático. Resolve tarefas mecânicas, médicas ou técnicas com consistência.", roll: "Role 1d6 + 2 em testes de proficiência." },
+          { level: 3, effect: "Especialista. Adapta ferramentas, improvisa recursos e domina procedimentos complexos.", roll: "Role 1d6 + 3 em testes de proficiência." }
+        ]
+      },
+      {
+        title: "Vigor",
+        icon: "assets/attr-vigor.svg",
+        defaultLevel: 2,
+        summary: "Resistência física, fôlego, recuperação e tolerância ao desgaste.",
+        levels: [
+          { level: 0, effect: "Baixa resistência. Você cansa cedo e sofre mais com desgaste físico.", roll: "Role 1d6 puro em testes de vigor." },
+          { level: 1, effect: "Condição comum. Aguenta perseguições e esforços moderados.", roll: "Role 1d6 + 1 em testes de vigor." },
+          { level: 2, effect: "Resistente. Suporta dor, corridas longas e cenas prolongadas de tensão.", roll: "Role 1d6 + 2 em testes de vigor." },
+          { level: 3, effect: "Excepcional. Você continua operando mesmo em condições exaustivas.", roll: "Role 1d6 + 3 em testes de vigor." }
+        ]
+      },
+      {
+        title: "Percepção",
+        icon: "assets/attr-percepcao.svg",
+        defaultLevel: 1,
+        summary: "Notar detalhes, pistas, movimentações e perigos ao redor.",
+        levels: [
+          { level: 0, effect: "Distraído. Você perde sinais sutis e demora a reagir ao ambiente.", roll: "Role 1d6 puro em testes de percepção." },
+          { level: 1, effect: "Atento. Identifica mudanças óbvias e perigos imediatos.", roll: "Role 1d6 + 1 em testes de percepção." },
+          { level: 2, effect: "Observador. Nota padrões, inconsistências e presenças ocultas.", roll: "Role 1d6 + 2 em testes de percepção." },
+          { level: 3, effect: "Muito aguçado. Quase sempre percebe algo antes dos outros.", roll: "Role 1d6 + 3 em testes de percepção." }
+        ]
+      },
+      {
+        title: "Intelecto",
+        icon: "assets/attr-intelecto.svg",
+        defaultLevel: 0,
+        summary: "Lógica, memória, leitura de contextos e solução de problemas.",
+        levels: [
+          { level: 0, effect: "Conhecimento básico. Você depende do óbvio e de tentativas diretas.", roll: "Role 1d6 puro em testes de intelecto." },
+          { level: 1, effect: "Raciocínio funcional. Interpreta informações simples e conexões diretas.", roll: "Role 1d6 + 1 em testes de intelecto." },
+          { level: 2, effect: "Analítico. Monta padrões e resolve enigmas com segurança.", roll: "Role 1d6 + 2 em testes de intelecto." },
+          { level: 3, effect: "Brilhante. Revela relações ocultas e enxerga o quadro maior rapidamente.", roll: "Role 1d6 + 3 em testes de intelecto." }
+        ]
+      },
+      {
+        title: "Presença",
+        icon: "assets/attr-presenca.svg",
+        defaultLevel: 0,
+        summary: "Carisma, persuasão, intimidação e capacidade de conduzir outras pessoas.",
+        levels: [
+          { level: 0, effect: "Reservado. Sua influência social é limitada e insegura.", roll: "Role 1d6 puro em testes de presença." },
+          { level: 1, effect: "Convincente. Você lida bem com interações sociais simples.", roll: "Role 1d6 + 1 em testes de presença." },
+          { level: 2, effect: "Marcante. Sua postura pesa em negociações, ordens e confrontos verbais.", roll: "Role 1d6 + 2 em testes de presença." },
+          { level: 3, effect: "Magnética. Pessoas tendem a ouvir, seguir ou hesitar diante de você.", roll: "Role 1d6 + 3 em testes de presença." }
+        ]
+      },
+      {
+        title: "Força",
+        icon: "assets/attr-forca.svg",
+        defaultLevel: 1,
+        summary: "Impacto físico, empurrar, carregar, agarrar e abrir passagem.",
+        levels: [
+          { level: 0, effect: "Fraco. Você tem dificuldade em ações de impacto e carga.", roll: "Role 1d6 puro em testes de força." },
+          { level: 1, effect: "Comum. Lida com desafios físicos moderados.", roll: "Role 1d6 + 1 em testes de força." },
+          { level: 2, effect: "Forte. Consegue forçar portas, segurar peso e dominar confrontos físicos.", roll: "Role 1d6 + 2 em testes de força." },
+          { level: 3, effect: "Muito forte. Você é decisivo em ações de impacto e contenção.", roll: "Role 1d6 + 3 em testes de força." }
+        ]
+      },
+      {
+        title: "Destreza",
+        icon: "assets/attr-destreza.svg",
+        defaultLevel: 0,
+        summary: "Reflexos, coordenação, agilidade e precisão motora.",
+        levels: [
+          { level: 0, effect: "Lento. Você tem mais dificuldade em reação e coordenação fina.", roll: "Role 1d6 puro em testes de destreza." },
+          { level: 1, effect: "Ágil. Reage bem em tarefas simples e deslocamentos rápidos.", roll: "Role 1d6 + 1 em testes de destreza." },
+          { level: 2, effect: "Hábil. Você executa ações delicadas ou rápidas com confiança.", roll: "Role 1d6 + 2 em testes de destreza." },
+          { level: 3, effect: "Preciso. Reflexos e coordenação acima da média até sob pressão.", roll: "Role 1d6 + 3 em testes de destreza." }
+        ]
+      }
+    ],
+
+    archetypes: [
+      { title: "Final Girl/Boy", icon: "assets/arch-final.svg", startingLevel: 0, summary: "Sobrevive quando tudo dá errado.", style: "Resiliente, cauteloso e difícil de derrubar. Brilha em cenas de tensão extrema e persistência.", focus: "Fuga, resistência, última chance e cenas em que continuar vivo é a prioridade absoluta.", benefit: "Uma vez por sessão, recebe vantagem narrativa ao resistir ou escapar de uma situação crítica." },
+      { title: "Atleta", icon: "assets/arch-atleta.svg", startingLevel: 0, summary: "Velocidade, impulso e preparo físico.", style: "Direto, energético e competitivo. Resolve pela ação e pelo corpo.", focus: "Perseguições, testes físicos, escaladas, corridas e confrontos de ritmo intenso.", benefit: "Em uma cena por sessão, pode repetir um teste físico que falhou por pouco." },
+      { title: "Intelectual", icon: "assets/arch-intelectual.svg", startingLevel: 0, summary: "Conhecimento e interpretação.", style: "Calmo, analítico e voltado a entender antes de agir.", focus: "Pesquisas, códigos, pistas, explicações, documentos e padrões escondidos.", benefit: "Ganha uma pista adicional quando investiga arquivos, símbolos ou enigmas relevantes." },
+      { title: "Investigador", icon: "assets/arch-investigador.svg", startingLevel: 0, summary: "Pistas, conexões e leitura de cenas.", style: "Observador, metódico e muito atento ao que os outros deixam passar.", focus: "Mapear versões, localizar evidências, perceber contradições e conectar acontecimentos.", benefit: "Uma vez por sessão, pode fazer uma pergunta direta sobre a cena e receber uma pista útil." },
+      { title: "Popular", icon: "assets/arch-popular.svg", startingLevel: 0, summary: "Influência social e rede de contatos.", style: "Carismático, articulado e sempre ligado às dinâmicas do grupo.", focus: "Favores, segredos sociais, manipulação, liderança e circulação de rumores.", benefit: "Recebe vantagem em uma interação social importante por sessão." },
+      { title: "Rebelde", icon: "assets/arch-rebelde.svg", startingLevel: 0, summary: "Improviso, risco e desafio às regras.", style: "Impulsivo, criativo e adaptável sob pressão.", focus: "Quebrar padrões, tentar soluções improváveis e agir quando ninguém quer agir.", benefit: "Pode transformar uma falha simples em sucesso parcial uma vez por sessão." },
+      { title: "Cuidador", icon: "assets/arch-cuidador.svg", startingLevel: 0, summary: "Proteção, suporte e recuperação.", style: "Empático, atento ao grupo e eficiente em manter pessoas de pé.", focus: "Amparo, primeiros socorros, mediação e sustentação emocional do grupo.", benefit: "Pode reduzir o impacto de dano ou medo em um aliado uma vez por sessão." },
+      { title: "Sobrevivencialista", icon: "assets/arch-sobrevivencialista.svg", startingLevel: 0, summary: "Preparação em ambientes hostis.", style: "Prático, prevenido e extremamente atento a recursos.", focus: "Escassez, deslocamento, improviso de abrigo, rastros e uso do ambiente.", benefit: "Recebe vantagem sempre que a cena envolver recursos, orientação ou adaptação ao ambiente." },
+      { title: "Ocultista", icon: "assets/arch-ocultista.svg", startingLevel: 0, summary: "Lendas, presságios e o que não deveria existir.", style: "Curioso, inquieto e atraído pelo desconhecido.", focus: "Sinais sobrenaturais, rituais, mitos, entidades e conhecimento proibido.", benefit: "Pode reconhecer um símbolo, presságio ou ritual uma vez por sessão sem precisar testar." },
+      { title: "Cético", icon: "assets/arch-cetico.svg", startingLevel: 0, summary: "Resistência a paranoia e manipulação.", style: "Frio, racional e desconfiado de interpretações precipitadas.", focus: "Questionar relatos, testar hipóteses e manter o grupo ancorado no concreto.", benefit: "Recebe bônus ao resistir a pânico, blefes ou manipulações emocionais." },
+      { title: "Outsider", icon: "assets/arch-outsider.svg", startingLevel: 0, summary: "Olhar externo e leitura do grupo.", style: "Distante, perspicaz e pouco preso às expectativas alheias.", focus: "Perceber dinâmicas escondidas, notar exclusões e interpretar pessoas de fora.", benefit: "Uma vez por sessão, identifica a tensão central de um grupo ou cena social." },
+      { title: "Alívio Cômico", icon: "assets/arch-alivio.svg", startingLevel: 0, summary: "Sorte, leveza e timing improvável.", style: "Espontâneo, errático e surpreendentemente funcional em situações absurdas.", focus: "Quebrar tensão, improvisar saídas inesperadas e sobreviver no caos.", benefit: "Uma vez por sessão, converte um resultado ruim em uma saída improvável porém válida." }
+    ]
+  },
+
   seasonsPage: {
     label: "Seasons",
     topIcons: [
