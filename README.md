@@ -80,3 +80,7 @@ Atualização: o card “Sobreviva!” foi renomeado para “Manual”. O hover 
 
 ## Atualização — Sistema global
 O Sistema agora fica no menu principal em `public/sistema.html` e possui três cards visuais editáveis para `manual.html`, `atributos.html` e `perks.html`. A Temporada 01 não possui mais um módulo Sistema próprio.
+
+
+## Manual global
+A página `public/manual.html` usa `manualPage` em `public/site-config.js`. Textos, cores e caminhos dos ícones são editáveis ali. Os vetores ficam em `public/assets/manual-topic-01.svg` etc.

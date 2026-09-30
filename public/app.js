@@ -138,6 +138,37 @@ function renderHome() {
   }
 }
 
+function renderManual() {
+  const root = document.querySelector(".manual-page");
+  const list = document.getElementById("manual-topic-list");
+  const label = document.getElementById("manual-label");
+  const m = CONFIG.manualPage;
+  if (!root || !list || !m) return;
+
+  document.documentElement.style.setProperty("--manual-bg", m.background || "#050505");
+  document.documentElement.style.setProperty("--manual-text", m.text || "#f0f0f0");
+  document.documentElement.style.setProperty("--manual-muted", m.mutedText || "#9a9a9a");
+  document.documentElement.style.setProperty("--manual-line", m.line || "rgba(255,255,255,.14)");
+  document.documentElement.style.setProperty("--manual-marker", m.markerColor || "#ffffff");
+  if (label) label.textContent = m.label || "MANUAL DE CAMPO";
+
+  list.innerHTML = "";
+  (m.topics || []).forEach(topic => {
+    const article = document.createElement("article");
+    article.className = "manual-topic";
+    article.innerHTML = `
+      <div class="manual-topic-head">
+        <div class="manual-topic-icon"><img src="${topic.icon || ''}" alt=""></div>
+        <div class="manual-topic-title-wrap">
+          <h2>${topic.title || ''}</h2>
+          <p>${topic.subtitle || ''}</p>
+        </div>
+      </div>
+      <p class="manual-topic-body">${topic.body || ''}</p>`;
+    list.appendChild(article);
+  });
+}
+
 function renderGlobalSystem() {
   const grid = document.getElementById("global-system-grid");
   if (!grid || !CONFIG.systemPage) return;
@@ -191,6 +222,7 @@ function renderSeasons() {
   renderHome();
   renderSeasons();
   renderGlobalSystem();
+  renderManual();
   setupSearch();
   await createSearchIndex();
 })();

@@ -71,6 +71,41 @@ window.OC101_CONFIG = {
   },
 
 
+  manualPage: {
+    label: "MANUAL DE CAMPO",
+    markerColor: "#ffffff",
+    background: "#050505",
+    text: "#f0f0f0",
+    mutedText: "#9a9a9a",
+    line: "rgba(255,255,255,.14)",
+    topics: [
+      {
+        title: "EFEITO BORBOLETA",
+        subtitle: "Escolhas pequenas podem alterar acontecimentos futuros.",
+        icon: "assets/manual-topic-01.svg",
+        body: "Edite este texto para explicar como decisões, ações e consequências funcionam dentro do RPG. Este bloco pode ser tão curto ou detalhado quanto você quiser."
+      },
+      {
+        title: "ROLAGEM DE DADOS",
+        subtitle: "Como resolver situações incertas durante as cenas.",
+        icon: "assets/manual-topic-02.svg",
+        body: "Use este espaço para explicar dados, resultados, sucessos, falhas, dificuldades, modificadores e qualquer outra regra relacionada às rolagens."
+      },
+      {
+        title: "JOGABILIDADE",
+        subtitle: "Estrutura geral das interações e da narrativa.",
+        icon: "assets/manual-topic-03.svg",
+        body: "Aqui você pode descrever o fluxo das cenas, como os jogadores interagem com narrações, decisões, missões, consequências e progressão."
+      },
+      {
+        title: "REGRAS GERAIS",
+        subtitle: "Informações complementares do sistema central.",
+        icon: "assets/manual-topic-04.svg",
+        body: "Este quarto bloco é totalmente opcional e editável. Você pode remover, duplicar ou transformar os tópicos diretamente no site-config.js."
+      }
+    ]
+  },
+
   systemPage: {
     background: "#050505",
     cardBackground: "#080808",
