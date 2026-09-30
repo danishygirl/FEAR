@@ -9,13 +9,13 @@
 
   document.querySelectorAll('[data-back]').forEach(a=>{a.href=C.site.backUrl;a.title=C.site.backLabel});
   document.querySelectorAll('[data-main]').forEach(a=>{a.href='index.html';a.textContent=C.site.mainLabel});
-  document.querySelectorAll('[data-season-badge]').forEach(e=>e.textContent=C.site.seasonBadge);
 
   const main=document.querySelector('[data-main-board]');
   if(main){
     const m=C.main;
     document.querySelector('[data-main-title]').textContent=m.title;
-    document.querySelector('[data-main-season]').textContent=m.season;
+    const seasonLabel=document.querySelector('[data-main-season]');
+    if(seasonLabel) seasonLabel.textContent=m.season;
     document.querySelector('[data-main-photo]').src=m.poster;
     document.querySelector('[data-main-small-photo]').src=m.smallPhoto;
     document.querySelector('[data-main-mystery-photo]').src=m.mysteryPhoto;
