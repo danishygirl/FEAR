@@ -87,13 +87,48 @@ window.SEASON01 = {
 
   pages: {
     sistema: {
-      eyebrow: "MANUAL DE CAMPO / 01",
+      kicker: "MANUAL DE CAMPO / 01",
       title: "SISTEMA",
-      intro: "Todas as regras do RPG podem ser organizadas aqui em blocos editáveis. Adicione, remova ou renomeie seções quando quiser.",
-      sections: [
-        { title: "COMO JOGAR", text: "Explique aqui a dinâmica geral das cenas, turnos, ações e interações entre jogadores." },
-        { title: "HABILIDADES", text: "Use este espaço para listar habilidades, testes, níveis, custos ou quaisquer mecânicas próprias." },
-        { title: "ROLAGENS & CONSEQUÊNCIAS", text: "Descreva dados, resultados, falhas, sucessos e efeitos narrativos." }
+      code: "FILE: SYS-01",
+      intro: "As regras centrais da Temporada 01 ficam organizadas em três arquivos. Todo o conteúdo abaixo é editável diretamente neste arquivo de configuração.",
+      footerLeft: "OC 101 / CAMP RULEBOOK",
+      footerRight: "REV. 01",
+      cards: [
+        {
+          key: "sobreviva",
+          title: "SOBREVIVA!",
+          image: "assets/rules-card.svg",
+          summary: "Efeito Borboleta, rolagens e configurações gerais da jogabilidade.",
+          sections: [
+            { title: "EFEITO BORBOLETA", text: "Explique aqui como decisões pequenas podem alterar eventos futuros, desbloquear consequências e modificar relações, pistas ou capítulos." },
+            { title: "ROLAGEM DE DADOS", text: "Defina aqui quais dados são usados, como funcionam testes, sucessos, falhas, bônus, penalidades e resultados críticos." },
+            { title: "COMO JOGAR", text: "Use este espaço para turnos, cenas, ações, limites narrativos, progressão, missões e outras regras gerais." }
+          ]
+        },
+        {
+          key: "atributos",
+          title: "ATRIBUTOS",
+          image: "assets/profile-card.svg",
+          summary: "Furtividade, Proficiência, Vigor e outros atributos totalmente editáveis.",
+          attributes: [
+            { name: "FURTIVIDADE", description: "Movimentar-se sem ser percebido, esconder-se e evitar atenção." },
+            { name: "PROFICIÊNCIA", description: "Conhecimento técnico, domínio de ferramentas e execução precisa." },
+            { name: "VIGOR", description: "Resistência física, esforço prolongado e tolerância a condições adversas." },
+            { name: "PERCEPÇÃO", description: "Notar detalhes, encontrar pistas e perceber mudanças no ambiente." },
+            { name: "PERSUASÃO", description: "Influenciar pessoas, negociar e conduzir interações sociais." }
+          ]
+        },
+        {
+          key: "vantagens",
+          title: "VANTAGENS",
+          image: "assets/chapter-card.svg",
+          summary: "Habilidades gerais sorteadas em narrações e concedidas como recompensa de missões.",
+          sections: [
+            { title: "COMO RECEBER", text: "As Vantagens podem surgir por sorteios narrativos, eventos especiais, objetivos concluídos ou recompensas de missão." },
+            { title: "USO", text: "Defina aqui se cada Vantagem é permanente, temporária, consumível, limitada por capítulo ou condicionada a uma situação." },
+            { title: "EXEMPLOS", text: "Adicione aqui as Vantagens disponíveis, seus efeitos, duração, condições e qualquer regra necessária." }
+          ]
+        }
       ]
     },
     fichario: {

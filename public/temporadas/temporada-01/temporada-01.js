@@ -45,6 +45,34 @@
   }
 
   const pageKey=document.body.dataset.page;
+
+  if(pageKey === "sistema" && C.pages.sistema){
+    const p=C.pages.sistema;
+    document.title=`${p.title} — Temporada 01 — OC 101`;
+    const q=(sel)=>document.querySelector(sel);
+    if(q('[data-system-kicker]')) q('[data-system-kicker]').textContent=p.kicker || '';
+    if(q('[data-system-title]')) q('[data-system-title]').textContent=p.title || 'SISTEMA';
+    if(q('[data-system-code]')) q('[data-system-code]').textContent=p.code || '';
+    if(q('[data-system-intro]')) q('[data-system-intro]').textContent=p.intro || '';
+    if(q('[data-system-footer-left]')) q('[data-system-footer-left]').textContent=p.footerLeft || '';
+    if(q('[data-system-footer-right]')) q('[data-system-footer-right]').textContent=p.footerRight || '';
+    const grid=q('[data-system-cards]');
+    if(grid){
+      grid.innerHTML=(p.cards||[]).map((card,i)=>{
+        const sections=(card.sections||[]).map(sec=>`<div class="system-rule"><h3>${sec.title}</h3><p>${sec.text}</p></div>`).join('');
+        const attrs=(card.attributes||[]).map(a=>`<div class="attribute-item"><strong>${a.name}</strong><span>${a.description}</span></div>`).join('');
+        return `<article class="system-card" data-system-card="${card.key||i}">
+          <div class="system-card-label">0${i+1} / ${card.key||'arquivo'}</div>
+          <div class="system-card-visual"><img src="${card.image||''}" alt=""></div>
+          <h2>${card.title}</h2>
+          <p class="system-card-summary">${card.summary||''}</p>
+          ${attrs ? `<div class="attribute-list">${attrs}</div>` : `<div class="system-rule-list">${sections}</div>`}
+        </article>`;
+      }).join('');
+    }
+    return;
+  }
+
   if(pageKey && C.pages[pageKey]){
     const p=C.pages[pageKey];
     document.title=`${p.title} — Temporada 01 — OC 101`;
