@@ -240,6 +240,175 @@ window.OC101_CONFIG = {
     ]
   },
 
+
+  perksPage: {
+    background: "#060606",
+    text: "#f2f2f2",
+    mutedText: "#b3b3b3",
+    line: "rgba(255,255,255,.16)",
+    panelBackground: "#090909",
+    title: "Habilidades",
+    groupLabel: "HABILIDADES PASSIVAS",
+    detailLabels: { ability: "HABILIDADE", roll: "ROLAGEM", requirement: "REQUISITO" },
+    perks: [
+      {
+        title: "Instinto de Sobrevivência",
+        icon: "assets/perk-instinto.svg",
+        subtitle: "Você reage primeiro quando a situação desmorona.",
+        requirement: "Escolha inicial / habilidade passiva",
+        description: "Seu corpo e mente entram em alerta sob ameaça direta. Essa habilidade representa reflexos de autopreservação, leitura rápida de perigo e respostas imediatas em cenas críticas.",
+        levels: [
+          { level: 0, label: "Nível 0", effect: "Seu instinto é comum. Você reconhece o perigo apenas quando ele já está muito próximo.", roll: "Sem bônus. Role 1d6 puro em reações ligadas à sobrevivência." },
+          { level: 1, label: "Nível 1", effect: "Você sente quando uma cena vai piorar e reage com um pouco mais de velocidade.", roll: "Role 1d6 + 1 em fugas, esquivas ou reações imediatas ao perigo." },
+          { level: 2, label: "Nível 2", effect: "Seu corpo entra em modo defensivo com eficiência. Você lê ameaças com antecedência moderada.", roll: "Role 1d6 + 2 em ações de sobrevivência, fuga ou resistência súbita." },
+          { level: 3, label: "Nível 3", effect: "Você é extremamente difícil de surpreender. Mesmo em pânico, reage de forma instintiva e eficaz.", roll: "Role 1d6 + 3 em reações críticas de sobrevivência. Em cena extrema, o narrador pode conceder uma pequena vantagem narrativa." }
+        ]
+      },
+      {
+        title: "Sexto Sentido",
+        icon: "assets/perk-sexto.svg",
+        subtitle: "Você sente quando algo está errado antes que os outros percebam.",
+        requirement: "Escolha inicial / habilidade passiva",
+        description: "Mais do que percepção comum, esta habilidade sugere intuição aguçada para presenças, mudanças sutis de ambiente e sensações de ameaça invisível.",
+        levels: [
+          { level: 0, label: "Nível 0", effect: "Você até tem pressentimentos, mas quase nunca sabe interpretá-los a tempo.", roll: "Sem bônus. Role 1d6 puro em testes narrativos de intuição." },
+          { level: 1, label: "Nível 1", effect: "Capta desconfortos, ruídos ou presenças estranhas em situações simples.", roll: "Role 1d6 + 1 ao tentar perceber algo incomum antes dos outros." },
+          { level: 2, label: "Nível 2", effect: "Percebe padrões estranhos e mudanças sutis com frequência confiável.", roll: "Role 1d6 + 2 em leituras intuitivas, presença oculta ou antecipação de ameaça." },
+          { level: 3, label: "Nível 3", effect: "Sua intuição beira o sobrenatural. Você quase sempre nota que há algo errado na cena.", roll: "Role 1d6 + 3 em intuição; o narrador pode oferecer um aviso extra quando houver um perigo iminente." }
+        ]
+      },
+      {
+        title: "Mãos Leves",
+        icon: "assets/perk-maos.svg",
+        subtitle: "Discrição manual, pequenos furtos e acesso silencioso a objetos.",
+        requirement: "Escolha inicial / habilidade passiva",
+        description: "Você lida bem com bolsos, trancas simples, itens pequenos e movimentos rápidos das mãos sem chamar atenção excessiva.",
+        levels: [
+          { level: 0, label: "Nível 0", effect: "Você até tenta, mas faz barulho, hesita ou chama atenção facilmente.", roll: "Sem bônus. Role 1d6 puro em ações discretas com as mãos." },
+          { level: 1, label: "Nível 1", effect: "Consegue pegar, esconder ou trocar itens em cenas menos tensas.", roll: "Role 1d6 + 1 em furtos discretos ou manipulação rápida de objetos." },
+          { level: 2, label: "Nível 2", effect: "Sua coordenação é segura e veloz, mesmo sob pressão moderada.", roll: "Role 1d6 + 2 em furtos, acesso a bolsos, kits, fechaduras simples ou ocultação de itens." },
+          { level: 3, label: "Nível 3", effect: "Você age com precisão cirúrgica e quase não deixa vestígios.", roll: "Role 1d6 + 3 em manipulações discretas; em casos simples, o narrador pode dispensar rolagem." }
+        ]
+      },
+      {
+        title: "Primeiros Socorros",
+        icon: "assets/perk-primeiros.svg",
+        subtitle: "Estabilizar ferimentos, improvisar atendimento e ganhar tempo.",
+        requirement: "Escolha inicial / habilidade passiva",
+        description: "Você sabe lidar com ferimentos imediatos, controlar sangramento, organizar materiais básicos e impedir que uma situação física piore rápido demais.",
+        levels: [
+          { level: 0, label: "Nível 0", effect: "Seu conhecimento é superficial. Ajuda pouco além do básico mais óbvio.", roll: "Sem bônus. Role 1d6 puro em ações de primeiros socorros." },
+          { level: 1, label: "Nível 1", effect: "Consegue limpar, conter e estabilizar ferimentos simples.", roll: "Role 1d6 + 1 em estabilização ou atendimento emergencial simples." },
+          { level: 2, label: "Nível 2", effect: "Atende ferimentos com consistência e reduz o agravamento da condição física.", roll: "Role 1d6 + 2 em primeiros socorros e contenção de dano físico." },
+          { level: 3, label: "Nível 3", effect: "Você trabalha com frieza, rapidez e improvisação muito eficiente sob estresse.", roll: "Role 1d6 + 3 em primeiros socorros; uma vez em cena grave, pode garantir estabilização parcial com forte vantagem narrativa." }
+        ]
+      },
+      {
+        title: "Sangue Frio",
+        icon: "assets/perk-sangue.svg",
+        subtitle: "Controle emocional em situações de choque, medo e violência.",
+        requirement: "Escolha inicial / habilidade passiva",
+        description: "Você consegue permanecer funcional quando a maioria congelaria. Útil contra pânico, pressão psicológica e decisões sob estresse extremo.",
+        levels: [
+          { level: 0, label: "Nível 0", effect: "Você sente o peso da cena como qualquer outra pessoa e pode travar facilmente.", roll: "Sem bônus. Role 1d6 puro em testes de autocontrole." },
+          { level: 1, label: "Nível 1", effect: "Mantém alguma compostura em momentos difíceis, embora ainda vacile em choques maiores.", roll: "Role 1d6 + 1 ao resistir a pânico, pressão ou hesitação." },
+          { level: 2, label: "Nível 2", effect: "Sua calma é sólida mesmo em situações fortes de violência ou ameaça.", roll: "Role 1d6 + 2 em resistência mental, autocontrole ou manutenção de foco." },
+          { level: 3, label: "Nível 3", effect: "Você quase nunca perde a cabeça. Atua com clareza mesmo quando o resto do grupo desmorona.", roll: "Role 1d6 + 3 em resistência psicológica; em certas cenas, o narrador pode reduzir impacto de MEDO." }
+        ]
+      },
+      {
+        title: "Observador",
+        icon: "assets/perk-observador.svg",
+        subtitle: "Notar detalhes e padrões que escapam ao resto do grupo.",
+        requirement: "Escolha inicial / habilidade passiva",
+        description: "Sua atenção vai além do óbvio, encontrando indícios, contradições, rastros e pequenos sinais escondidos no ambiente ou no comportamento alheio.",
+        levels: [
+          { level: 0, label: "Nível 0", effect: "Você percebe o que está visível, mas costuma perder sinais finos.", roll: "Sem bônus. Role 1d6 puro em leituras detalhadas de cena." },
+          { level: 1, label: "Nível 1", effect: "Nota detalhes relevantes em uma inspeção cuidadosa.", roll: "Role 1d6 + 1 ao procurar pistas, rastros ou inconsistências." },
+          { level: 2, label: "Nível 2", effect: "Seu olhar encontra padrões e pequenas quebras de lógica com frequência.", roll: "Role 1d6 + 2 em varredura de ambiente, pistas e leitura de comportamento." },
+          { level: 3, label: "Nível 3", effect: "Quase nada passa despercebido por você quando decide observar com atenção real.", roll: "Role 1d6 + 3; o narrador pode oferecer uma pista extra em cenas investigativas importantes." }
+        ]
+      },
+      {
+        title: "Influente",
+        icon: "assets/perk-influente.svg",
+        subtitle: "Convencer, acalmar, pressionar ou conduzir pessoas.",
+        requirement: "Escolha inicial / habilidade passiva",
+        description: "Você sabe pesar palavras, postura e timing social para obter reações melhores em conversas críticas ou situações coletivas tensas.",
+        levels: [
+          { level: 0, label: "Nível 0", effect: "Sua influência é pequena e irregular.", roll: "Sem bônus. Role 1d6 puro em tentativas de convencimento ou pressão social." },
+          { level: 1, label: "Nível 1", effect: "Consegue persuadir ou acalmar em interações simples ou diretas.", roll: "Role 1d6 + 1 em persuasão, intimidação leve ou mediação." },
+          { level: 2, label: "Nível 2", effect: "Sua presença tem peso real em discussões e decisões de grupo.", roll: "Role 1d6 + 2 em liderança, convencimento e condução emocional de cena." },
+          { level: 3, label: "Nível 3", effect: "Você manipula o ritmo social da cena e influencia mesmo sob forte tensão.", roll: "Role 1d6 + 3 em ações sociais; em uma cena por sessão, pode receber forte vantagem narrativa em discurso decisivo." }
+        ]
+      },
+      {
+        title: "Improvisador",
+        icon: "assets/perk-improvisador.svg",
+        subtitle: "Soluções rápidas, gambiarras e saídas improváveis.",
+        requirement: "Escolha inicial / habilidade passiva",
+        description: "Você transforma sucata, pouco tempo e informação incompleta em soluções utilizáveis. Muito útil em cenas de crise ou falta de recursos.",
+        levels: [
+          { level: 0, label: "Nível 0", effect: "Você tenta improvisar, mas os resultados são instáveis ou pouco seguros.", roll: "Sem bônus. Role 1d6 puro em improvisos materiais ou estratégicos." },
+          { level: 1, label: "Nível 1", effect: "Consegue soluções funcionais em problemas simples ou momentâneos.", roll: "Role 1d6 + 1 em improvisos de ferramenta, rota ou plano." },
+          { level: 2, label: "Nível 2", effect: "Monta respostas rápidas com confiança mesmo em ambiente ruim.", roll: "Role 1d6 + 2 ao adaptar itens, criar saídas ou resolver com poucos recursos." },
+          { level: 3, label: "Nível 3", effect: "Você acha utilidade onde ninguém mais acharia. Suas saídas absurdas frequentemente funcionam.", roll: "Role 1d6 + 3 em improviso; em situações plausíveis, o narrador pode permitir sucesso parcial sem rolagem." }
+        ]
+      },
+      {
+        title: "Conhecimento Proibido",
+        icon: "assets/perk-conhecimento.svg",
+        subtitle: "Rituais, lendas, símbolos e o que deveria permanecer oculto.",
+        requirement: "Escolha inicial / habilidade passiva",
+        description: "Você estudou ou entrou em contato com informações perturbadoras sobre o sobrenatural, crenças obscuras ou registros que a maioria jamais veria.",
+        levels: [
+          { level: 0, label: "Nível 0", effect: "Você conhece apenas rumores e fragmentos desconexos.", roll: "Sem bônus. Role 1d6 puro em testes de conhecimento oculto." },
+          { level: 1, label: "Nível 1", effect: "Reconhece símbolos básicos, superstições recorrentes e sinais mais conhecidos.", roll: "Role 1d6 + 1 ao interpretar mitos, sinais estranhos ou relatos sobrenaturais." },
+          { level: 2, label: "Nível 2", effect: "Seu repertório inclui rituais, vínculos e implicações menos óbvias.", roll: "Role 1d6 + 2 ao analisar entidades, rituais ou documentos proibidos." },
+          { level: 3, label: "Nível 3", effect: "Seu domínio do obscuro é profundo e inquietante.", roll: "Role 1d6 + 3; em uma cena por sessão, pode reconhecer imediatamente a função de um símbolo ou procedimento oculto relevante." }
+        ]
+      },
+      {
+        title: "Protetor",
+        icon: "assets/perk-protetor.svg",
+        subtitle: "Interpor-se, cobrir aliados e absorver parte do caos.",
+        requirement: "Escolha inicial / habilidade passiva",
+        description: "Você possui impulso natural de defesa e cobertura. É a pessoa que segura a linha quando alguém precisa de tempo, espaço ou amparo.",
+        levels: [
+          { level: 0, label: "Nível 0", effect: "Sua intenção de proteger existe, mas nem sempre você age da melhor forma.", roll: "Sem bônus. Role 1d6 puro ao tentar defender ou cobrir alguém." },
+          { level: 1, label: "Nível 1", effect: "Consegue oferecer proteção útil em cenas simples ou rápidas.", roll: "Role 1d6 + 1 em cobertura, bloqueio ou amparo imediato a aliados." },
+          { level: 2, label: "Nível 2", effect: "Você protege com firmeza, reduzindo o impacto das situações mais tensas no grupo.", roll: "Role 1d6 + 2 ao interpor-se, retirar alguém do risco ou sustentar defesa." },
+          { level: 3, label: "Nível 3", effect: "Seu instinto defensivo é decisivo e heroico.", roll: "Role 1d6 + 3; em uma cena crítica, o narrador pode permitir absorver parte de uma consequência destinada a outro personagem." }
+        ]
+      },
+      {
+        title: "Fugitivo",
+        icon: "assets/perk-fugitivo.svg",
+        subtitle: "Escapar, sumir de vista e ganhar distância sob ameaça.",
+        requirement: "Escolha inicial / habilidade passiva",
+        description: "Você sabe recuar, romper perseguições e explorar brechas de rota quando a melhor solução é simplesmente não estar mais ali.",
+        levels: [
+          { level: 0, label: "Nível 0", effect: "Você corre, mas sem técnica real para despistar ou reposicionar.", roll: "Sem bônus. Role 1d6 puro em fugas e perseguições." },
+          { level: 1, label: "Nível 1", effect: "Consegue escapar bem em rotas simples e cenários com alguma cobertura.", roll: "Role 1d6 + 1 em perseguições, retirada rápida e fuga curta." },
+          { level: 2, label: "Nível 2", effect: "Você lê caminhos e brechas com segurança durante a fuga.", roll: "Role 1d6 + 2 em despiste, perseguição e reposicionamento urgente." },
+          { level: 3, label: "Nível 3", effect: "É extremamente difícil manter você encurralado por muito tempo.", roll: "Role 1d6 + 3 em fugas; em situação plausível, o narrador pode conceder vantagem narrativa para desaparecer de vista temporariamente." }
+        ]
+      },
+      {
+        title: "Desconfiado",
+        icon: "assets/perk-desconfiado.svg",
+        subtitle: "Resistir a manipulação, blefes e promessas suspeitas.",
+        requirement: "Escolha inicial / habilidade passiva",
+        description: "Você raramente aceita versões prontas sem questionar. Essa habilidade protege contra falsas certezas, truques emocionais e decisões apressadas impostas por terceiros.",
+        levels: [
+          { level: 0, label: "Nível 0", effect: "Você ainda pode cair com facilidade em discursos convincentes ou pressões emocionais.", roll: "Sem bônus. Role 1d6 puro para perceber mentira, blefe ou manipulação." },
+          { level: 1, label: "Nível 1", effect: "Questiona melhor intenções e versões suspeitas em situações simples.", roll: "Role 1d6 + 1 ao desconfiar de informação, promessa ou postura alheia." },
+          { level: 2, label: "Nível 2", effect: "Sua leitura crítica reduz bastante a chance de ser enganado sem resistência.", roll: "Role 1d6 + 2 ao resistir a blefes, manipulação ou falsas narrativas." },
+          { level: 3, label: "Nível 3", effect: "Você desarma incoerências com rapidez e quase sempre percebe quando algo está fora do lugar.", roll: "Role 1d6 + 3 em resistência a engano; em cena importante, pode solicitar ao narrador um indício de inconsistência." }
+        ]
+      }
+    ]
+  },
   seasonsPage: {
     label: "Seasons",
     topIcons: [

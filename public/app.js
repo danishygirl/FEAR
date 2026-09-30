@@ -306,6 +306,66 @@ function renderAttributesPage() {
   }
 }
 
+
+function renderPerksPage() {
+  const page = document.getElementById("perks-page");
+  if (!page || !CONFIG.perksPage) return;
+  const cfg = CONFIG.perksPage;
+  const grid = document.getElementById("perks-grid");
+  const detail = document.getElementById("perk-detail");
+  const group = document.getElementById("perks-group-label");
+
+  document.documentElement.style.setProperty("--perks-page-bg", cfg.background || "#060606");
+  document.documentElement.style.setProperty("--perks-page-text", cfg.text || "#f2f2f2");
+  document.documentElement.style.setProperty("--perks-page-muted", cfg.mutedText || "#b3b3b3");
+  document.documentElement.style.setProperty("--perks-page-line", cfg.line || "rgba(255,255,255,.16)");
+  document.documentElement.style.setProperty("--perks-panel-bg", cfg.panelBackground || "#090909");
+
+  if (group) group.textContent = cfg.groupLabel || "PASSIVAS";
+
+  function renderPerkDetail(item) {
+    if (!detail || !item) return;
+    detail.innerHTML = `
+      <div class="perk-detail-scroll">
+        <div class="perk-hero"><div class="perk-hero-icon"><img src="${item.icon || ''}" alt=""></div></div>
+        <div class="perk-title-row">
+          <div class="perk-mini-icon"><img src="${item.icon || ''}" alt=""></div>
+          <div class="perk-title-copy">
+            <h2>${item.title || ''}</h2>
+            <p>${item.subtitle || ''}</p>
+          </div>
+        </div>
+        <div class="perk-requirement"><span>${cfg.detailLabels?.requirement || 'REQUISITO'}</span>${item.requirement || ''}</div>
+        <div class="perk-ability-label">${cfg.detailLabels?.ability || 'HABILIDADE'}</div>
+        <div class="perk-description">${item.description || ''}</div>
+        <div class="perk-level-section">
+          ${(item.levels || []).map(level => `
+            <div class="perk-level-row">
+              <div class="perk-level-head">${level.label || ('Nível ' + level.level)}</div>
+              <div class="perk-level-effect">${level.effect || ''}</div>
+              <div class="perk-level-roll"><span>${cfg.detailLabels?.roll || 'ROLAGEM'}</span>${level.roll || ''}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>`;
+  }
+
+  if (grid) {
+    grid.innerHTML = (cfg.perks || []).map((item, index) => `
+      <button class="perk-button ${index === 0 ? 'active' : ''}" type="button" data-perk-index="${index}" aria-label="${item.title || ''}">
+        <span class="perk-button-icon"><img src="${item.icon || ''}" alt=""></span>
+      </button>`).join('');
+    grid.querySelectorAll('[data-perk-index]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        grid.querySelectorAll('.perk-button').forEach(x => x.classList.remove('active'));
+        btn.classList.add('active');
+        renderPerkDetail(cfg.perks[Number(btn.dataset.perkIndex)]);
+      });
+    });
+    renderPerkDetail((cfg.perks || [])[0]);
+  }
+}
+
 (async function init() {
   applyConfig();
   createMenu();
@@ -314,6 +374,7 @@ function renderAttributesPage() {
   renderGlobalSystem();
   renderManual();
   renderAttributesPage();
+  renderPerksPage();
   setupSearch();
   await createSearchIndex();
 })();
