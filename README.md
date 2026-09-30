@@ -51,3 +51,6 @@ backgroundImage: "url('assets/background.webp')"
 npm install
 npm run deploy
 ```
+
+## Temporada 01 — tema de dossiê/acampamento
+A Main da Temporada 01 usa elementos editáveis em HTML/CSS (papéis, polaroids, ficha, carimbos e fotos). Edite textos, cores e caminhos de imagens em `public/temporadas/temporada-01/temporada-01-data.js`. As subpáginas atuais são Sistema, Fichário, Capítulos e Arquivos.
