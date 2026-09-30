@@ -4,13 +4,10 @@
   --nav-bg:rgba(235,228,216,.22); --nav-border:rgba(255,255,255,.35); --nav-text:#f7f3ec;
   --shadow:0 18px 40px rgba(0,0,0,.28);
   --body-font:'Courier New',Courier,monospace; --ui-font:Arial,Helvetica,sans-serif; --title-font:'Courier New',Courier,monospace;
+  --season-overlay:rgba(0,0,0,0);
 }
 *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;min-height:100vh;background:var(--desk);color:var(--ink);font-family:var(--body-font);overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;z-index:-3;background:
- radial-gradient(circle at 12% 15%,rgba(255,255,255,.045),transparent 26%),
- radial-gradient(circle at 82% 26%,rgba(0,0,0,.28),transparent 30%),
- repeating-linear-gradient(0deg,rgba(255,255,255,.015) 0 1px,rgba(0,0,0,.018) 1px 3px),
- linear-gradient(115deg,#312d28,#1d1b18 48%,#2a2722);}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:var(--season-overlay);}
 body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.13;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E")}
 button,a{font:inherit} a{color:inherit}
 .season-shell{min-height:100vh;padding:34px 34px 34px;position:relative}

@@ -5,7 +5,22 @@
   const t=C.theme;
   const vars={"--desk":t.desk,"--paper":t.paper,"--paper-light":t.paperLight,"--paper-dark":t.paperDark,"--ink":t.ink,"--muted":t.mutedInk,"--accent":t.accent,"--nav-bg":t.navBackground,"--nav-border":t.navBorder,"--nav-text":t.navText,"--shadow":t.cardShadow,"--body-font":t.bodyFont,"--ui-font":t.uiFont,"--title-font":t.titleFont};
   Object.entries(vars).forEach(([k,v])=>r.setProperty(k,v));
-  if(t.deskImage) document.body.style.backgroundImage=`url('${t.deskImage}')`;
+  // BACKGROUND EDITÁVEL DA TEMPORADA 01
+  const bg = t.background || {};
+  const body = document.body;
+  body.style.backgroundColor = bg.color || t.desk || '#26231f';
+  if (bg.image) {
+    body.style.backgroundImage = `url('${bg.image}')`;
+    body.style.backgroundSize = bg.size || 'cover';
+    body.style.backgroundPosition = bg.position || 'center top';
+    body.style.backgroundRepeat = bg.repeat || 'no-repeat';
+    body.style.backgroundAttachment = bg.attachment || 'fixed';
+  } else if (t.deskImage) {
+    body.style.backgroundImage = `url('${t.deskImage}')`;
+  } else {
+    body.style.backgroundImage = 'none';
+  }
+  r.setProperty('--season-overlay', bg.overlay || 'rgba(0,0,0,0)');
 
   document.querySelectorAll('[data-back]').forEach(a=>{a.href=C.site.backUrl;a.title=C.site.backLabel});
   document.querySelectorAll('[data-main]').forEach(a=>{a.href='index.html';a.textContent=C.site.mainLabel});

@@ -54,3 +54,14 @@ npm run deploy
 
 ## Temporada 01 — tema de dossiê/acampamento
 A Main da Temporada 01 usa elementos editáveis em HTML/CSS (papéis, polaroids, ficha, carimbos e fotos). Edite textos, cores e caminhos de imagens em `public/temporadas/temporada-01/temporada-01-data.js`. As subpáginas atuais são Sistema, Fichário, Capítulos e Arquivos.
+
+
+## Background editável — Temporada 01
+A Main agora aceita imagem de background configurável em:
+`public/temporadas/temporada-01/temporada-01-data.js`
+
+O arquivo padrão incluído é:
+`public/temporadas/temporada-01/assets/background-main.webp`
+
+Edite `theme.background` para mudar imagem, cor, posição, tamanho, repetição, fixação e overlay.
+Para desativar a imagem, use `image: ""`.

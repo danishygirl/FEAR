@@ -8,6 +8,19 @@ window.SEASON01 = {
 
   theme: {
     desk: "#26231f",
+
+    // BACKGROUND DA TEMPORADA 01 — totalmente editável
+    background: {
+      color: "#302b27",
+      image: "assets/background-main.webp",
+      size: "cover",
+      position: "center top",
+      repeat: "no-repeat",
+      attachment: "fixed",
+      overlay: "rgba(0, 0, 0, 0.04)"
+    },
+
+    // Compatibilidade com versões anteriores. Pode deixar vazio.
     deskImage: "",
     paper: "#e8dfcf",
     paperLight: "#f5efe4",
