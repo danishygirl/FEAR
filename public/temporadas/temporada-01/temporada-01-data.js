@@ -16,7 +16,7 @@ window.SEASON01 = {
       size: "cover",
       position: "center top",
       repeat: "no-repeat",
-      attachment: "fixed",
+      attachment: "scroll",
       overlay: "rgba(0, 0, 0, 0.04)"
     },
 
@@ -56,13 +56,6 @@ window.SEASON01 = {
 
   modules: [
     {
-      key: "sistema",
-      title: "SISTEMA",
-      description: "Regras, mecânicas e como jogar.",
-      image: "assets/rules-card.svg",
-      url: "sistema.html"
-    },
-    {
       key: "fichario",
       title: "FICHÁRIO",
       description: "Campistas, staff e outros envolvidos.",
@@ -86,56 +79,6 @@ window.SEASON01 = {
   ],
 
   pages: {
-    sistema: {
-      kicker: "MANUAL DE CAMPO / 01",
-      title: "SISTEMA",
-      code: "FILE: SYS-01",
-      intro: "Escolha um dos três arquivos para consultar as regras, capacidades e recompensas da temporada.",
-      footerLeft: "OC 101 / CAMP RULEBOOK",
-      footerRight: "REV. 02",
-      cards: [
-        {
-          key: "sobreviva",
-          title: "SOBREVIVA!",
-          image: "assets/system-survive.svg",
-          summary: "Regras, processos e como jogar.",
-          intro: "Um guia rápido para entender as regras principais da temporada. O jogo é narrativo, direto e baseado em escolhas e consequências.",
-          sections: [
-            { title: "EFEITO BORBOLETA", text: "Pequenas decisões podem gerar grandes consequências. Cada ação, por menor que pareça, pode alterar o rumo da história." },
-            { title: "ROLAGEM DE DADOS", text: "Quando o resultado é incerto, role os dados. O resultado determina sucesso, complicação ou uma nova reviravolta." },
-            { title: "JOGABILIDADE GERAL", text: "A campanha prioriza exploração, decisões, consequências, narrativa e liberdade de escolha. Edite este texto para incluir todas as suas regras gerais." }
-          ]
-        },
-        {
-          key: "atributos",
-          title: "ATRIBUTOS",
-          image: "assets/system-attributes.svg",
-          summary: "O que define as capacidades do personagem.",
-          intro: "Atributos representam capacidades principais usadas em ações, testes e interações. Você pode adicionar ou remover quantos quiser.",
-          attributes: [
-            { name: "FURTIVIDADE", icon: "assets/icon-binoculars.svg", description: "Movimentar-se sem ser notado e evitar situações perigosas." },
-            { name: "PROFICIÊNCIA", icon: "assets/icon-book.svg", description: "Conhecimento técnico e habilidade com equipamentos." },
-            { name: "VIGOR", icon: "assets/icon-boots.svg", description: "Resistência física e capacidade de suportar condições extremas." },
-            { name: "PERCEPÇÃO", icon: "assets/icon-eye.svg", description: "Notar detalhes, identificar riscos e perceber o que outros não veem." },
-            { name: "RACIOCÍNIO", icon: "assets/icon-brain.svg", description: "Resolver problemas, conectar informações e encontrar soluções." }
-          ]
-        },
-        {
-          key: "vantagens",
-          title: "VANTAGENS",
-          image: "assets/system-advantages.svg",
-          summary: "Habilidades, talentos e recompensas.",
-          intro: "Vantagens são habilidades gerais sorteadas em narrações ou concedidas como recompensas de missões.",
-          advantages: [
-            { name: "SOBREVIVENTE", icon: "assets/icon-backpack.svg", description: "Mais recursos e maior resistência em ambientes hostis." },
-            { name: "EXPLORADOR", icon: "assets/icon-compass.svg", description: "Encontre rotas ocultas, atalhos e locais especiais." },
-            { name: "SOCORRISTA", icon: "assets/icon-firstaid.svg", description: "Preste primeiros socorros e ajude outros personagens." },
-            { name: "OBSERVADOR", icon: "assets/icon-camera.svg", description: "Perceba pistas adicionais e detalhes importantes." },
-            { name: "MULTIFERRAMENTA", icon: "assets/icon-tool.svg", description: "Use ferramentas com mais eficiência e crie soluções criativas." }
-          ]
-        }
-      ]
-    },
     fichario: {
       eyebrow: "REGISTRO DE PESSOAL / 01",
       title: "FICHÁRIO",

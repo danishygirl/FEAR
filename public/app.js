@@ -138,6 +138,25 @@ function renderHome() {
   }
 }
 
+function renderGlobalSystem() {
+  const grid = document.getElementById("global-system-grid");
+  if (!grid || !CONFIG.systemPage) return;
+  const s = CONFIG.systemPage;
+  document.documentElement.style.setProperty("--system-global-bg", s.background || "#050505");
+  document.documentElement.style.setProperty("--system-card-bg", s.cardBackground || "#080808");
+  document.documentElement.style.setProperty("--system-card-border", s.cardBorder || "rgba(255,255,255,.18)");
+  document.documentElement.style.setProperty("--system-card-hover-border", s.cardHoverBorder || "rgba(255,255,255,.55)");
+  grid.innerHTML = "";
+  (s.cards || []).forEach(card => {
+    const a = document.createElement("a");
+    a.className = "global-system-card";
+    a.href = card.url || "#";
+    a.setAttribute("aria-label", card.ariaLabel || card.key || "Sistema");
+    a.innerHTML = `<img src="${card.image}" alt="">`;
+    grid.appendChild(a);
+  });
+}
+
 function renderSeasons() {
   const label = document.getElementById("seasons-label");
   if (label) label.textContent = CONFIG.seasonsPage.label;
@@ -171,6 +190,7 @@ function renderSeasons() {
   createMenu();
   renderHome();
   renderSeasons();
+  renderGlobalSystem();
   setupSearch();
   await createSearchIndex();
 })();

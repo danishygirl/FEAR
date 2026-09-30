@@ -34,7 +34,8 @@ window.OC101_CONFIG = {
 
   menu: [
     { name: "Home", icon: "⌂", url: "index.html" },
-    { name: "Temporadas", icon: "▤", url: "temporadas.html" }
+    { name: "Temporadas", icon: "▤", url: "temporadas.html" },
+    { name: "Sistema", icon: "◫", url: "sistema.html" }
 
     // Para adicionar outra página:
     // ,{ name: "Arquivo", icon: "□", url: "arquivo.html" }
@@ -43,8 +44,11 @@ window.OC101_CONFIG = {
   searchPages: [
     { name: "Home", url: "index.html" },
     { name: "Temporadas", url: "temporadas.html" },
+    { name: "Sistema", url: "sistema.html" },
+    { name: "Manual", url: "manual.html" },
+    { name: "Atributos", url: "atributos.html" },
+    { name: "Perks", url: "perks.html" },
     { name: "Temporada 01", url: "temporadas/temporada-01/index.html" },
-    { name: "Sistema — Temporada 01", url: "temporadas/temporada-01/sistema.html" },
     { name: "Fichário — Temporada 01", url: "temporadas/temporada-01/fichario.html" },
     { name: "Capítulos — Temporada 01", url: "temporadas/temporada-01/capitulos.html" },
     { name: "Arquivos — Temporada 01", url: "temporadas/temporada-01/arquivos.html" }
@@ -63,6 +67,19 @@ window.OC101_CONFIG = {
     footerLinks: [
       { name: "Discord", url: "https://discord.com", icon: "◉" },
       { name: "Fórum", url: "https://example.com", icon: "□" }
+    ]
+  },
+
+
+  systemPage: {
+    background: "#050505",
+    cardBackground: "#080808",
+    cardBorder: "rgba(255,255,255,.18)",
+    cardHoverBorder: "rgba(255,255,255,.55)",
+    cards: [
+      { key: "manual", image: "assets/system-manual.svg", url: "manual.html", ariaLabel: "Manual" },
+      { key: "atributos", image: "assets/system-atributos.svg", url: "atributos.html", ariaLabel: "Atributos" },
+      { key: "perks", image: "assets/system-perks.svg", url: "perks.html", ariaLabel: "Perks" }
     ]
   },
 

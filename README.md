@@ -69,3 +69,14 @@ Para desativar a imagem, use `image: ""`.
 
 ## Sistema V2
 A página Sistema agora abre com apenas três cards centralizados: Sobreviva!, Atributos e Vantagens. Cada card abre um modal/hover independente. O conteúdo é editável em `public/temporadas/temporada-01/temporada-01-data.js` dentro de `pages.sistema`.
+
+
+## Otimização de desempenho
+Esta versão remove blur/backdrop-filter dos modais e do menu da Temporada 01, reduz sombras e filtros de imagem, desativa a textura fixa na página Sistema e muda o background da temporada de `fixed` para `scroll`. O visual permanece próximo, mas exige bem menos composição gráfica do navegador.
+
+
+Atualização: o card “Sobreviva!” foi renomeado para “Manual”. O hover Manual usa blocos editoriais com ícones editáveis por tópico em temporada-01-data.js.
+
+
+## Atualização — Sistema global
+O Sistema agora fica no menu principal em `public/sistema.html` e possui três cards visuais editáveis para `manual.html`, `atributos.html` e `perks.html`. A Temporada 01 não possui mais um módulo Sistema próprio.

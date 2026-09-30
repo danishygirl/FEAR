@@ -14,7 +14,7 @@
     body.style.backgroundSize = bg.size || 'cover';
     body.style.backgroundPosition = bg.position || 'center top';
     body.style.backgroundRepeat = bg.repeat || 'no-repeat';
-    body.style.backgroundAttachment = bg.attachment || 'fixed';
+    body.style.backgroundAttachment = bg.attachment || 'scroll';
   } else if (t.deskImage) {
     body.style.backgroundImage = `url('${t.deskImage}')`;
   } else {
@@ -63,8 +63,17 @@
 
     function renderDetail(card){
       if(card.key==='sobreviva'){
-        return `<div class="system-detail-head"><span class="system-detail-file">${esc(p.code||'FILE: SYS-01')}</span><h2 id="system-modal-title">${esc(card.title)}</h2><p>${esc(card.intro||card.summary||'')}</p></div>
-          <div class="system-step-list">${(card.sections||[]).map((sec,i)=>`<article class="system-step"><div class="system-step-marker">${i < 2 ? '✓' : '◌'}</div><div><h3>${esc(sec.title)}</h3><p>${esc(sec.text)}</p></div></article>`).join('')}</div>`;
+        return `<div class="manual-hover">
+          <div class="manual-heading"><span class="manual-square"></span><span class="manual-heading-label">${esc(card.manualLabel||'MANUAL DE CAMPO')}</span></div>
+          <div class="system-detail-head manual-detail-head"><span class="system-detail-file">${esc(p.code||'FILE: SYS-01')}</span><h2 id="system-modal-title">${esc(card.title)}</h2><p>${esc(card.intro||card.summary||'')}</p></div>
+          <div class="manual-topic-list">${(card.sections||[]).map((sec,i)=>`<article class="manual-topic">
+            <div class="manual-topic-lead">
+              <div class="manual-topic-icon"><img src="${esc(sec.icon||card.image||'')}" alt=""></div>
+              <div class="manual-topic-copy"><span class="manual-topic-index">${String(i+1).padStart(2,'0')}</span><h3>${esc(sec.title)}</h3><p class="manual-topic-summary">${esc(sec.summary||'')}</p></div>
+            </div>
+            <p class="manual-topic-body">${esc(sec.text||'')}</p>
+          </article>`).join('')}</div>
+        </div>`;
       }
       const items=card.key==='atributos' ? (card.attributes||[]) : (card.advantages||[]);
       return `<div class="system-detail-head"><span class="system-detail-file">${esc(p.code||'FILE: SYS-01')}</span><h2 id="system-modal-title">${esc(card.title)}</h2><p>${esc(card.intro||card.summary||'')}</p></div>
@@ -86,8 +95,9 @@
 
     if(grid){
       grid.innerHTML=(p.cards||[]).map((card,i)=>`<button class="system-choice-card" type="button" data-system-open="${esc(card.key||i)}">
+        <div class="system-choice-copy-top"><span class="system-choice-eyebrow">${esc(card.eyebrow || ('ARQUIVO ' + String(i+1).padStart(2,'0')))}</span></div>
         <div class="system-choice-image"><img src="${esc(card.image||'')}" alt=""></div>
-        <div class="system-choice-copy"><span class="system-choice-number">0${i+1}</span><h2>${esc(card.title)}</h2><p>${esc(card.summary||'')}</p></div>
+        <div class="system-choice-copy"><h2>${esc(card.title)}</h2><p>${esc(card.summary||'')}</p></div>
       </button>`).join('');
       grid.addEventListener('click',e=>{
         const btn=e.target.closest('[data-system-open]');
