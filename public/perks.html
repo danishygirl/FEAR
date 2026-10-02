@@ -9,17 +9,27 @@
 <body>
   <main class="perks-page deck-style-page" id="perks-page">
     <section class="perks-shell deck-style-shell">
+      <div class="system-page-topline">
+        <span class="system-page-kicker">Sistema Central</span>
+        <span class="system-page-rule"></span>
+      </div>
       <div class="perks-header-line deck-style-header">
-        <h1>Habilidades</h1>
+        <h1>Perks</h1>
+        <p>Selecione um card para abrir um dossiê com todos os detalhes da habilidade.</p>
       </div>
       <div class="perks-layout deck-style-layout">
         <div class="perks-left deck-style-left">
           <div class="perks-grid deck-card-grid" id="perks-grid"></div>
         </div>
-        <aside class="perks-detail-panel deck-detail-panel is-hidden" id="perk-detail"></aside>
       </div>
     </section>
   </main>
+
+  <div class="perk-modal is-hidden" id="perk-modal" aria-hidden="true">
+    <div class="perk-modal-backdrop" data-close-modal="true"></div>
+    <div class="perk-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="perk-modal-title"></div>
+  </div>
+
   <script src="site-config.js"></script>
   <script src="app.js"></script>
 </body>

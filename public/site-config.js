@@ -112,9 +112,9 @@ window.OC101_CONFIG = {
     cardBorder: "rgba(255,255,255,.18)",
     cardHoverBorder: "rgba(255,255,255,.55)",
     cards: [
-      { key: "manual", image: "assets/system-manual.svg", url: "manual.html", ariaLabel: "Manual" },
-      { key: "atributos", image: "assets/system-atributos.svg", url: "atributos.html", ariaLabel: "Atributos" },
-      { key: "perks", image: "assets/system-perks.svg", url: "perks.html", ariaLabel: "Perks" }
+      { key: "manual", image: "assets/system-manual.svg", url: "manual.html", ariaLabel: "Manual", eyebrow: "Core Rules", description: "Rolagens, estrutura de cena e orientações gerais de jogabilidade." },
+      { key: "atributos", image: "assets/system-atributos.svg", url: "atributos.html", ariaLabel: "Atributos / Arquétipos", eyebrow: "Character Build", description: "Leitura rápida das aptidões e perfis narrativos que moldam cada personagem." },
+      { key: "perks", image: "assets/system-perks.svg", url: "perks.html", ariaLabel: "Perks", eyebrow: "Ability Files", description: "Deck investigativo de habilidades com dossiês individuais ao clicar em cada card." }
     ]
   },
 

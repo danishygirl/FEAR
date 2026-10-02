@@ -174,16 +174,24 @@ function renderGlobalSystem() {
   if (!grid || !CONFIG.systemPage) return;
   const s = CONFIG.systemPage;
   document.documentElement.style.setProperty("--system-global-bg", s.background || "#050505");
-  document.documentElement.style.setProperty("--system-card-bg", s.cardBackground || "#080808");
-  document.documentElement.style.setProperty("--system-card-border", s.cardBorder || "rgba(255,255,255,.18)");
-  document.documentElement.style.setProperty("--system-card-hover-border", s.cardHoverBorder || "rgba(255,255,255,.55)");
+  document.documentElement.style.setProperty("--system-card-bg", s.cardBackground || "#f2eee6");
+  document.documentElement.style.setProperty("--system-card-border", s.cardBorder || "rgba(20,20,20,.08)");
+  document.documentElement.style.setProperty("--system-card-hover-border", s.cardHoverBorder || "rgba(214,196,169,.95)");
   grid.innerHTML = "";
   (s.cards || []).forEach(card => {
     const a = document.createElement("a");
     a.className = "global-system-card";
     a.href = card.url || "#";
     a.setAttribute("aria-label", card.ariaLabel || card.key || "Sistema");
-    a.innerHTML = `<img src="${card.image}" alt="">`;
+    a.innerHTML = `
+      <div class="global-system-card-inner">
+        <div class="global-system-card-top">${card.eyebrow || 'SYSTEM MODULE'}</div>
+        <div class="global-system-card-visual"><img src="${card.image}" alt=""></div>
+        <div class="global-system-card-bottom">
+          <h2>${card.ariaLabel || card.key || ''}</h2>
+          <p>${card.description || 'Abrir subpágina editável com conteúdo detalhado do sistema.'}</p>
+        </div>
+      </div>`;
     grid.appendChild(a);
   });
 }
@@ -232,7 +240,8 @@ function renderAttributesPage() {
 
   if (attrGrid) {
     attrGrid.innerHTML = (cfg.attributes || []).map(item => `
-      <article class="overview-item">
+      <article class="overview-item investigative-item">
+        <div class="overview-item-topline">ATTR</div>
         <div class="overview-icon"><img src="${item.icon || ''}" alt=""></div>
         <div class="overview-copy">
           <h3>${item.title || ''}</h3>
@@ -243,7 +252,8 @@ function renderAttributesPage() {
 
   if (archGrid) {
     archGrid.innerHTML = (cfg.archetypes || []).map(item => `
-      <article class="overview-item archetype-overview-item">
+      <article class="overview-item investigative-item archetype-overview-item">
+        <div class="overview-item-topline">ARCHETYPE</div>
         <div class="overview-icon"><img src="${item.icon || ''}" alt=""></div>
         <div class="overview-copy">
           <h3>${item.title || ''}</h3>
@@ -259,8 +269,8 @@ function renderPerksPage() {
   if (!page || !CONFIG.perksPage) return;
   const cfg = CONFIG.perksPage;
   const grid = document.getElementById("perks-grid");
-  const detail = document.getElementById("perk-detail");
-  const group = document.getElementById("perks-group-label");
+  const modal = document.getElementById("perk-modal");
+  const dialog = modal?.querySelector('.perk-modal-dialog');
 
   document.documentElement.style.setProperty("--perks-page-bg", cfg.background || "#060708");
   document.documentElement.style.setProperty("--perks-page-text", cfg.text || "#f1f1ef");
@@ -268,48 +278,67 @@ function renderPerksPage() {
   document.documentElement.style.setProperty("--perks-page-line", cfg.line || "rgba(255,255,255,.16)");
   document.documentElement.style.setProperty("--perks-panel-bg", cfg.panelBackground || "#08090a");
 
-  if (group) group.textContent = cfg.groupLabel || "PASSIVAS";
-
   const toRoman = (n) => ({0:'0',1:'I',2:'II',3:'III',4:'IV',5:'V'})[n] || String(n || 'I');
 
-  function hideDetail() {
-    if (!detail) return;
-    detail.classList.add('is-hidden');
-    detail.innerHTML = '';
+  function closeModal() {
+    if (!modal || !dialog) return;
+    modal.classList.add('is-hidden');
+    modal.setAttribute('aria-hidden', 'true');
+    dialog.innerHTML = '';
+    document.body.classList.remove('modal-open');
     if (grid) grid.querySelectorAll('.perk-card').forEach(x => x.classList.remove('active'));
   }
 
-  function renderPerkDetail(item, index) {
-    if (!detail || !item) return;
-    detail.classList.remove('is-hidden');
+  function openModal(item) {
+    if (!modal || !dialog || !item) return;
     const rank = item.cardRank ?? (item.levels?.length ? Math.max(...item.levels.map(l => Number(l.level) || 0)) : 1);
-    detail.innerHTML = `
-      <button class="perk-detail-close" type="button" aria-label="Fechar">×</button>
-      <div class="perk-detail-scroll deck-detail-scroll">
-        <div class="deck-detail-top">
-          <div class="deck-detail-card">
-            <span class="deck-detail-rank">${toRoman(rank)}</span>
-            <div class="deck-detail-card-art"><img src="${item.icon || ''}" alt=""></div>
-            <div class="deck-detail-card-name">${item.title || ''}</div>
-          </div>
-          <div class="deck-detail-copy">
-            <h2>${item.title || ''}</h2>
-            <div class="deck-detail-subtitle">${item.subtitle || ''}</div>
-            <div class="deck-detail-description">${item.description || ''}</div>
-          </div>
+    dialog.innerHTML = `
+      <button class="perk-modal-close" type="button" aria-label="Fechar">×</button>
+      <div class="perk-modal-paper">
+        <div class="perk-modal-header">
+          <div class="perk-modal-kicker">Arquivo de habilidade</div>
+          <div class="perk-modal-header-line"></div>
+          <div class="perk-modal-code">${item.code || 'PRK-01'}</div>
         </div>
-        <div class="deck-level-section">
-          ${(item.levels || []).map(level => `
-            <div class="deck-level-row">
-              <div class="deck-level-title">${level.label || ('Nível ' + level.level)}</div>
-              <div class="deck-level-effect">${level.effect || ''}</div>
-              <div class="deck-level-roll"><span>${cfg.detailLabels?.roll || 'Rolagem'}</span>${level.roll || ''}</div>
+        <div class="perk-modal-body">
+          <div class="perk-modal-left">
+            <div class="deck-detail-card">
+              <span class="deck-detail-rank">${toRoman(rank)}</span>
+              <div class="deck-detail-card-art"><img src="${item.icon || ''}" alt=""></div>
+              <div class="deck-detail-card-name">${item.title || ''}</div>
             </div>
-          `).join('')}
+          </div>
+          <div class="perk-modal-right">
+            <div class="deck-detail-copy">
+              <h2 id="perk-modal-title">${item.title || ''}</h2>
+              <div class="deck-detail-subtitle">${item.subtitle || ''}</div>
+              <div class="deck-detail-description">${item.description || ''}</div>
+            </div>
+            <div class="deck-level-section">
+              ${(item.levels || []).map(level => `
+                <div class="deck-level-row">
+                  <div class="deck-level-title">${level.label || ('Nível ' + level.level)}</div>
+                  <div class="deck-level-effect">${level.effect || ''}</div>
+                  <div class="deck-level-roll"><span>${cfg.detailLabels?.roll || 'Rolagem'}</span>${level.roll || ''}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
         </div>
       </div>`;
-    const closeBtn = detail.querySelector('.perk-detail-close');
-    if (closeBtn) closeBtn.addEventListener('click', hideDetail);
+    dialog.querySelector('.perk-modal-close')?.addEventListener('click', closeModal);
+    modal.classList.remove('is-hidden');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+  }
+
+  if (modal) {
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal || event.target.closest('[data-close-modal="true"]')) closeModal();
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !modal.classList.contains('is-hidden')) closeModal();
+    });
   }
 
   if (grid) {
@@ -329,7 +358,7 @@ function renderPerksPage() {
       btn.addEventListener('click', () => {
         grid.querySelectorAll('.perk-card').forEach(x => x.classList.remove('active'));
         btn.classList.add('active');
-        renderPerkDetail(cfg.perks[Number(btn.dataset.perkIndex)], Number(btn.dataset.perkIndex));
+        openModal(cfg.perks[Number(btn.dataset.perkIndex)]);
       });
     });
   }
