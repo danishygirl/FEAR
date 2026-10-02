@@ -7,36 +7,20 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="site-layout">
-  <aside class="sidebar">
-    <div class="site-brand">
-      <div class="logo-box"><img id="site-logo" src="assets/logo-placeholder.svg" alt="Logo"></div>
-      <div><div class="site-name" id="site-name">OC 101</div><div class="site-tagline" id="site-tagline">UM UNIVERSO, MUITAS HISTÓRIAS.</div></div>
-    </div>
-    <div class="search-wrapper">
-      <div class="search-box"><span class="search-icon">⌕</span><input type="text" id="site-search" placeholder="Search" autocomplete="off"></div>
-      <div id="search-results" class="search-results"></div>
-    </div>
-    <nav class="sidebar-menu" id="sidebar-menu"></nav>
-    <div class="sidebar-bottom">OC 101</div>
-  </aside>
-
-  <main class="page-content perks-page" id="perks-page">
-    <section class="perks-shell">
-      <div class="perks-header-line">
+  <main class="perks-page deck-style-page" id="perks-page">
+    <section class="perks-shell deck-style-shell">
+      <div class="perks-header-line deck-style-header">
         <h1>Habilidades</h1>
       </div>
-      <div class="perks-layout">
-        <div class="perks-left">
-          <div class="perks-group-label" id="perks-group-label">PASSIVAS</div>
-          <div class="perks-grid" id="perks-grid"></div>
+      <div class="perks-layout deck-style-layout">
+        <div class="perks-left deck-style-left">
+          <div class="perks-grid deck-card-grid" id="perks-grid"></div>
         </div>
-        <aside class="perks-detail-panel" id="perk-detail"></aside>
+        <aside class="perks-detail-panel deck-detail-panel is-hidden" id="perk-detail"></aside>
       </div>
     </section>
   </main>
-</div>
-<script src="site-config.js"></script>
-<script src="app.js"></script>
+  <script src="site-config.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>

@@ -222,87 +222,34 @@ function renderAttributesPage() {
   if (!page || !CONFIG.attributesPage) return;
   const cfg = CONFIG.attributesPage;
   const attrGrid = document.getElementById("attribute-grid");
-  const attrDetail = document.getElementById("attribute-detail");
-  const archList = document.getElementById("archetype-list");
-  const archDetail = document.getElementById("archetype-detail");
+  const archGrid = document.getElementById("archetype-list");
 
-  document.documentElement.style.setProperty("--attr-page-bg", cfg.background || "#060606");
+  document.documentElement.style.setProperty("--attr-page-bg", cfg.background || "#050505");
   document.documentElement.style.setProperty("--attr-page-text", cfg.text || "#f2f2f2");
   document.documentElement.style.setProperty("--attr-page-muted", cfg.mutedText || "#adadad");
   document.documentElement.style.setProperty("--attr-page-line", cfg.line || "rgba(255,255,255,.16)");
   document.documentElement.style.setProperty("--attr-page-icon", cfg.iconColor || "#f2f2f2");
 
-  function renderAttributeDetail(item) {
-    if (!attrDetail || !item) return;
-    attrDetail.innerHTML = `
-      <div class="detail-head">
-        <div class="detail-icon large"><img src="${item.icon || ''}" alt=""></div>
-        <div class="detail-head-copy">
-          <h3>${item.title || ''}</h3>
-          <p>${item.summary || ''}</p>
-        </div>
-      </div>
-      <div class="level-list">
-        ${(item.levels || []).map(level => `
-          <div class="level-row">
-            <div class="level-name">Nível ${level.level}</div>
-            <div class="level-copy">
-              <p class="level-effect">${level.effect || ''}</p>
-              <p class="level-roll">${level.roll || ''}</p>
-            </div>
-          </div>`).join('')}
-      </div>`;
-  }
-
-  function renderArchetypeDetail(item) {
-    if (!archDetail || !item) return;
-    archDetail.innerHTML = `
-      <div class="detail-head">
-        <div class="detail-icon large"><img src="${item.icon || ''}" alt=""></div>
-        <div class="detail-head-copy">
-          <h3>${item.title || ''}</h3>
-          <p>${item.summary || ''}</p>
-        </div>
-      </div>
-      <div class="arch-detail-list">
-        <div class="arch-detail-row"><div class="arch-label">Estilo de jogo</div><div class="arch-value">${item.style || ''}</div></div>
-        <div class="arch-detail-row"><div class="arch-label">Foco narrativo</div><div class="arch-value">${item.focus || ''}</div></div>
-        <div class="arch-detail-row"><div class="arch-label">Vantagem inicial</div><div class="arch-value">${item.benefit || ''}</div></div>
-      </div>`;
-  }
-
   if (attrGrid) {
-    attrGrid.innerHTML = (cfg.attributes || []).map((item, index) => `
-      <button class="attribute-button ${index === 0 ? 'active' : ''}" type="button" data-attribute-index="${index}">
-        <span class="attribute-level-badge">${item.defaultLevel ?? 0}</span>
-        <span class="attribute-icon"><img src="${item.icon || ''}" alt=""></span>
-        <span class="attribute-title">${item.title || ''}</span>
-      </button>`).join('');
-    attrGrid.querySelectorAll('[data-attribute-index]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        attrGrid.querySelectorAll('.attribute-button').forEach(x => x.classList.remove('active'));
-        btn.classList.add('active');
-        renderAttributeDetail(cfg.attributes[Number(btn.dataset.attributeIndex)]);
-      });
-    });
-    renderAttributeDetail((cfg.attributes || [])[0]);
+    attrGrid.innerHTML = (cfg.attributes || []).map(item => `
+      <article class="overview-item">
+        <div class="overview-icon"><img src="${item.icon || ''}" alt=""></div>
+        <div class="overview-copy">
+          <h3>${item.title || ''}</h3>
+          <p>${item.summary || ''}</p>
+        </div>
+      </article>`).join('');
   }
 
-  if (archList) {
-    archList.innerHTML = (cfg.archetypes || []).map((item, index) => `
-      <button class="archetype-button ${index === 0 ? 'active' : ''}" type="button" data-archetype-index="${index}">
-        <span class="archetype-level-badge">${item.startingLevel ?? 0}</span>
-        <span class="archetype-icon"><img src="${item.icon || ''}" alt=""></span>
-        <span class="archetype-title">${item.title || ''}</span>
-      </button>`).join('');
-    archList.querySelectorAll('[data-archetype-index]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        archList.querySelectorAll('.archetype-button').forEach(x => x.classList.remove('active'));
-        btn.classList.add('active');
-        renderArchetypeDetail(cfg.archetypes[Number(btn.dataset.archetypeIndex)]);
-      });
-    });
-    renderArchetypeDetail((cfg.archetypes || [])[0]);
+  if (archGrid) {
+    archGrid.innerHTML = (cfg.archetypes || []).map(item => `
+      <article class="overview-item archetype-overview-item">
+        <div class="overview-icon"><img src="${item.icon || ''}" alt=""></div>
+        <div class="overview-copy">
+          <h3>${item.title || ''}</h3>
+          <p>${item.summary || ''}</p>
+        </div>
+      </article>`).join('');
   }
 }
 
@@ -315,56 +262,79 @@ function renderPerksPage() {
   const detail = document.getElementById("perk-detail");
   const group = document.getElementById("perks-group-label");
 
-  document.documentElement.style.setProperty("--perks-page-bg", cfg.background || "#060606");
-  document.documentElement.style.setProperty("--perks-page-text", cfg.text || "#f2f2f2");
-  document.documentElement.style.setProperty("--perks-page-muted", cfg.mutedText || "#b3b3b3");
+  document.documentElement.style.setProperty("--perks-page-bg", cfg.background || "#060708");
+  document.documentElement.style.setProperty("--perks-page-text", cfg.text || "#f1f1ef");
+  document.documentElement.style.setProperty("--perks-page-muted", cfg.mutedText || "#a6a7a7");
   document.documentElement.style.setProperty("--perks-page-line", cfg.line || "rgba(255,255,255,.16)");
-  document.documentElement.style.setProperty("--perks-panel-bg", cfg.panelBackground || "#090909");
+  document.documentElement.style.setProperty("--perks-panel-bg", cfg.panelBackground || "#08090a");
 
   if (group) group.textContent = cfg.groupLabel || "PASSIVAS";
 
-  function renderPerkDetail(item) {
+  const toRoman = (n) => ({0:'0',1:'I',2:'II',3:'III',4:'IV',5:'V'})[n] || String(n || 'I');
+
+  function hideDetail() {
+    if (!detail) return;
+    detail.classList.add('is-hidden');
+    detail.innerHTML = '';
+    if (grid) grid.querySelectorAll('.perk-card').forEach(x => x.classList.remove('active'));
+  }
+
+  function renderPerkDetail(item, index) {
     if (!detail || !item) return;
+    detail.classList.remove('is-hidden');
+    const rank = item.cardRank ?? (item.levels?.length ? Math.max(...item.levels.map(l => Number(l.level) || 0)) : 1);
     detail.innerHTML = `
-      <div class="perk-detail-scroll">
-        <div class="perk-hero"><div class="perk-hero-icon"><img src="${item.icon || ''}" alt=""></div></div>
-        <div class="perk-title-row">
-          <div class="perk-mini-icon"><img src="${item.icon || ''}" alt=""></div>
-          <div class="perk-title-copy">
+      <button class="perk-detail-close" type="button" aria-label="Fechar">×</button>
+      <div class="perk-detail-scroll deck-detail-scroll">
+        <div class="deck-detail-top">
+          <div class="deck-detail-card">
+            <span class="deck-detail-rank">${toRoman(rank)}</span>
+            <div class="deck-detail-card-art"><img src="${item.icon || ''}" alt=""></div>
+            <div class="deck-detail-card-name">${item.title || ''}</div>
+          </div>
+          <div class="deck-detail-copy">
             <h2>${item.title || ''}</h2>
-            <p>${item.subtitle || ''}</p>
+            <div class="deck-detail-subtitle">${item.subtitle || ''}</div>
+            <div class="deck-detail-description">${item.description || ''}</div>
           </div>
         </div>
-        <div class="perk-requirement"><span>${cfg.detailLabels?.requirement || 'REQUISITO'}</span>${item.requirement || ''}</div>
-        <div class="perk-ability-label">${cfg.detailLabels?.ability || 'HABILIDADE'}</div>
-        <div class="perk-description">${item.description || ''}</div>
-        <div class="perk-level-section">
+        <div class="deck-level-section">
           ${(item.levels || []).map(level => `
-            <div class="perk-level-row">
-              <div class="perk-level-head">${level.label || ('Nível ' + level.level)}</div>
-              <div class="perk-level-effect">${level.effect || ''}</div>
-              <div class="perk-level-roll"><span>${cfg.detailLabels?.roll || 'ROLAGEM'}</span>${level.roll || ''}</div>
+            <div class="deck-level-row">
+              <div class="deck-level-title">${level.label || ('Nível ' + level.level)}</div>
+              <div class="deck-level-effect">${level.effect || ''}</div>
+              <div class="deck-level-roll"><span>${cfg.detailLabels?.roll || 'Rolagem'}</span>${level.roll || ''}</div>
             </div>
           `).join('')}
         </div>
       </div>`;
+    const closeBtn = detail.querySelector('.perk-detail-close');
+    if (closeBtn) closeBtn.addEventListener('click', hideDetail);
   }
 
   if (grid) {
-    grid.innerHTML = (cfg.perks || []).map((item, index) => `
-      <button class="perk-button ${index === 0 ? 'active' : ''}" type="button" data-perk-index="${index}" aria-label="${item.title || ''}">
-        <span class="perk-button-icon"><img src="${item.icon || ''}" alt=""></span>
-      </button>`).join('');
+    grid.innerHTML = (cfg.perks || []).map((item, index) => {
+      const rank = item.cardRank ?? (item.levels?.length ? Math.max(...item.levels.map(l => Number(l.level) || 0)) : 1);
+      return `
+      <button class="perk-card" type="button" data-perk-index="${index}" aria-label="${item.title || ''}">
+        <span class="perk-card-rank">${toRoman(rank)}</span>
+        <span class="perk-card-frame">
+          <span class="perk-card-art"><img src="${item.icon || ''}" alt=""></span>
+        </span>
+        <span class="perk-card-title">${item.title || ''}</span>
+      </button>`;
+    }).join('');
+
     grid.querySelectorAll('[data-perk-index]').forEach(btn => {
       btn.addEventListener('click', () => {
-        grid.querySelectorAll('.perk-button').forEach(x => x.classList.remove('active'));
+        grid.querySelectorAll('.perk-card').forEach(x => x.classList.remove('active'));
         btn.classList.add('active');
-        renderPerkDetail(cfg.perks[Number(btn.dataset.perkIndex)]);
+        renderPerkDetail(cfg.perks[Number(btn.dataset.perkIndex)], Number(btn.dataset.perkIndex));
       });
     });
-    renderPerkDetail((cfg.perks || [])[0]);
   }
 }
+
 
 (async function init() {
   applyConfig();
